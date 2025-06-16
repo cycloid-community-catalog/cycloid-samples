@@ -1,0 +1,73 @@
+---
+version: "2"
+use_cases:
+- name: default
+  sections:
+  - name: DG
+    groups:
+    - name: DG Specifications
+      technologies: [pipeline]
+      vars:
+      - name: "DG Name"
+        description: "The name of the DG."
+        key: dg_name
+        widget: simple_text
+        type: string
+        validations: 
+        - regexp: "^[a-z0-9-]+$" 
+          error_message: "Please enter a valid DG name."
+        required: true
+
+    - name: Amazon Web Services
+      technologies: [pipeline]
+      vars:
+      - name: "Provision an AWS account in the new DG?"
+        description: "Shall we provision an AWS account in the new DG?"
+        key: aws
+        widget: switch
+        type: boolean
+        value: false
+        required: false
+
+    - name: Amazon Web Services Specifications
+      technologies: [pipeline]
+      condition: "$aws == true"
+      vars:
+      - name: "AWS Account"
+        description: "The AWS account where the DG could deploy the infrastructure."
+        key: aws_cred
+        widget: cy_cred
+        widget_config:
+          display_keys: false
+          cred_types:
+            - aws
+        type: string
+        default: "((aws))"
+        required: true
+
+    - name: Azure
+      technologies: [pipeline]
+      vars:
+      - name: "Provision an Azure account in the new DG?"
+        description: "Shall we provision an Azure account in the new DG?"
+        key: azure
+        widget: switch
+        type: boolean
+        value: false
+        required: false
+
+    - name: Azure Specifications
+      technologies: [pipeline]
+      condition: "$azure == true"
+      vars:
+      - name: "Azure Account"
+        description: "The Azure account where the DG could deploy the infrastructure."
+        key: azure_cred
+        widget: cy_cred
+        widget_config:
+          display_keys: false
+          cred_types:
+            - azure
+        type: string
+        default: "((azure))"
+        required: true

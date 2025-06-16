@@ -1,0 +1,61 @@
+#
+# Cloud Provider
+#
+
+#. aws_cred (required): ((aws-us-saas-account))
+#+ Amazon credentials containing access key and secret key for Terraform. See value format [here](https://docs.cycloid.io/advanced-guide/integrate-and-use-cycloid-credentials-manager.html#vault-in-the-pipeline)
+aws_cred: ((aws-us-saas-account))
+
+#. aws_default_region (required): us-east-1
+#+ AWS region to use for Terraform.
+aws_region: us-east-1
+
+
+##
+# Cycloid
+#
+
+#. cycloid_root_org_canonical (required): ''
+#+ Parent Cycloid organization where the child organization will be created.
+cycloid_root_org_canonical: ''
+
+#. cycloid_root_org_jwt (required): ''
+#+ Parent Cycloid organization API key allowing to manage child organizations.
+cycloid_root_org_jwt: ''
+
+
+#
+# GitHub
+#
+
+#. github_pat (required): ''
+#+ GitHub Personal Access Token allowing to manage repositories and user SSH keys. We will create a repository with stacks and config branches as well as an SSH public key stored as Cycloid credential to connect to it.
+github_pat: "((github-pat.key))"
+
+#
+# Cycloid Subscription
+#
+
+#. cycloid_core_instance_id (required): ""
+#+ Instance ID of the Cycloid core server.
+cycloid_core_instance_id: "i-0842e6f5472016884"
+
+#. plan_canonical (required): "free_trial"
+#+ Canonical name of the subscription.
+plan_canonical: "free_trial"
+
+#. members_count (required): ""
+#+ Number of users in the subscription.
+members_count: "10"
+
+#. expiration_date (required): ""
+#+ Subscription expiration date such as 2024-07-31.
+expiration_date: ""
+
+#
+# Default variables
+#
+
+#. terraform_version (required): '1.8.5'
+#+ terraform version used to execute your code.
+terraform_version: '1.8.5'
