@@ -14,7 +14,7 @@ use_cases:
         widget: simple_text
         type: string
         validations: 
-        - regexp: "^[a-zA-Z0-9-]+$" 
+        - regexp: "^[a-z0-9-]+$" 
           error_message: "Please enter a valid DG name."
         required: true
 
@@ -23,7 +23,7 @@ use_cases:
       vars:
       - name: "Provision an AWS account in the new DG?"
         description: "Shall we provision an AWS account in the new DG?"
-        key: aws
+        key: aws_sel
         widget: switch
         type: boolean
         value: false
@@ -31,7 +31,7 @@ use_cases:
 
     - name: Amazon Web Services Specifications
       technologies: [pipeline]
-      condition: "$aws == true"
+      condition: "$aws_sel == true"
       vars:
       - name: "AWS Account"
         description: "The AWS account where the DG could deploy the infrastructure."
@@ -50,7 +50,7 @@ use_cases:
       vars:
       - name: "Provision an Azure account in the new DG?"
         description: "Shall we provision an Azure account in the new DG?"
-        key: azure
+        key: azure_sel
         widget: switch
         type: boolean
         value: false
@@ -58,7 +58,7 @@ use_cases:
 
     - name: Azure Specifications
       technologies: [pipeline]
-      condition: "$azure == true"
+      condition: "$azure_sel == true"
       vars:
       - name: "Azure Account"
         description: "The Azure account where the DG could deploy the infrastructure."

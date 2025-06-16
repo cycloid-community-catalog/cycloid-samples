@@ -51,5 +51,21 @@ module "cycloid-org" {
   #+ SSH Key Pair used in newly provisionned workloads
   private_key_openssh = module.tf-backend.aws_private_key_openssh
 
+  #. aws_sel: ''
+  #+ Shall we provision an AWS account in the new DG."
+  aws_sel = var.aws_sel
+
+  #. aws_cred_child: ''
+  #+ Shall we provision an AWS account in the new DG."
+  aws_cred_child = var.aws_cred_child
+
+  #. azure_sel: ''
+  #+ Shall we provision an AWS account in the new DG."
+  azure_sel = var.azure_sel
+
+  #. azure_cred_child: ''
+  #+ Shall we provision an Azure account in the new DG."
+  azure_cred_child = var.azure_cred_child
+
   depends_on = [ github_branch.config ]
 }

@@ -8,6 +8,24 @@ variable "dg_name" {
   description = "The name of the DG."
 }
 
+variable "aws_sel" {
+  description = "Shall we provision an AWS account in the new DG."
+}
+
+variable "aws_cred_child" {
+  description = "Contains AWS access_key and secret_key"
+  sensitive   = true
+}
+
+variable "azure_sel" {
+  description = "Shall we provision an AWS account in the new DG."
+}
+
+variable "azure_cred_child" {
+  description = "Contains Azure credentials."
+  sensitive   = true
+}
+
 variable "cycloid_git_url" {
   description = "Git repository URL for stacks and config."
   default = "trials"

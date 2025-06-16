@@ -18,6 +18,23 @@ variable "aws_region" {
   default     = "eu-west-1"
 }
 
+variable "aws_sel" {
+  description = "Shall we provision an AWS account in the new DG."
+}
+
+variable "aws_cred_child" {
+  description = "Contains AWS access_key and secret_key"
+  sensitive   = true
+}
+
+variable "azure_sel" {
+  description = "Shall we provision an AWS account in the new DG."
+}
+
+variable "azure_cred_child" {
+  description = "Contains Azure credentials."
+  sensitive   = true
+}
 variable "cycloid_root_org_jwt" {
   type        = string
   description = "Root Org JWT used for authentication"
