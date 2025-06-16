@@ -9,10 +9,10 @@ resource "github_repository" "cycloid-demo" {
   }
 }
 
-resource "github_branch" "config" {
-  repository = github_repository.cycloid-demo.name
-  branch     = "config"
-}
+# resource "github_branch" "config" {
+#   repository = github_repository.cycloid-demo.name
+#   branch     = "config"
+# }
 
 resource "tls_private_key" "github_generated_key" {
   algorithm   = "ED25519"
