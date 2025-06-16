@@ -14,7 +14,7 @@ use_cases:
         widget: simple_text
         type: string
         validations: 
-        - regexp: "^[a-z0-9-]+$" 
+        - regexp: "^[a-zA-Z0-9-]+$" 
           error_message: "Please enter a valid DG name."
         required: true
 
