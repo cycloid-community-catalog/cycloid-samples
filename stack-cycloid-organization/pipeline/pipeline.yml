@@ -32,6 +32,7 @@ resources:
     vars:
       aws_cred: ((aws_cred))
       aws_region: ((aws_region))
+      dg_name: ((dg_name))
       cycloid_root_org_jwt: ((cycloid_root_org_jwt))
       cycloid_api_url: ($ .api_url $)
       github_pat: ((github_pat))

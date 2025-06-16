@@ -1,5 +1,5 @@
 #
-# Cloud Provider
+# Pipeline Variables
 #
 
 #. aws_cred (required): ((aws-non-production))
@@ -10,19 +10,13 @@ aws_cred: ((aws-non-production))
 #+ AWS region to use for Terraform.
 aws_region: eu-west-1
 
-
-##
-# Cycloid
-#
+#. dg_name (required): ''
+#+ The name of the DG.
+dg_name: ""
 
 #. cycloid_root_org_jwt (required): ((admin-api-key.key))
 #+ Parent Cycloid organization API key allowing to manage child organizations.
 cycloid_root_org_jwt: ((admin-api-key.key))
-
-
-#
-# GitHub
-#
 
 #. github_pat (required): ''
 #+ GitHub Personal Access Token allowing to manage repositories and user SSH keys. We will create a repository with stacks and config branches as well as an SSH public key stored as Cycloid credential to connect to it.
