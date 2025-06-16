@@ -10,7 +10,7 @@ module "tf-backend" {
 
   #. dg_name: ""
   #+ The name of the DG
-  dg_name = ""
+  dg_name = var.dg_name
 }
 
 module "cycloid-org" {
@@ -25,7 +25,7 @@ module "cycloid-org" {
 
   #. dg_name: ""
   #+ The name of the DG
-  dg_name = ""
+  dg_name = var.dg_name
 
   #. cycloid_git_url: ''
   #+ Git repository URL for stacks and config
