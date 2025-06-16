@@ -13,7 +13,7 @@ resource "cycloid_credential" "s3-cycloid" {
 }
 
 resource "cycloid_external_backend" "tf_external_backend" {
-  organization_canonical = var.env
+  organization_canonical = var.dg_name
   credential_canonical = cycloid_credential.s3-cycloid.canonical
   default = true
   purpose = "remote_tfstate"
