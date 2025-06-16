@@ -35,7 +35,7 @@ use_cases:
       vars:
       - name: "AWS Account"
         description: "The AWS account where the DG could deploy the infrastructure."
-        key: aws_cred
+        key: aws_cred_child
         widget: cy_cred
         widget_config:
           display_keys: false
@@ -62,7 +62,7 @@ use_cases:
       vars:
       - name: "Azure Account"
         description: "The Azure account where the DG could deploy the infrastructure."
-        key: azure_cred
+        key: azure_cred_child
         widget: cy_cred
         widget_config:
           display_keys: false

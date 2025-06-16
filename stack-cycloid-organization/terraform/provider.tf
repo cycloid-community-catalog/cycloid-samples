@@ -16,7 +16,7 @@ provider "aws" {
 provider "cycloid" {
   url                    = var.cycloid_api_url
   jwt                    = var.cycloid_root_org_jwt
-  organization_canonical = var.cycloid_root_org_canonical
+  organization_canonical = var.cy_org
 }
 
 provider "github" {

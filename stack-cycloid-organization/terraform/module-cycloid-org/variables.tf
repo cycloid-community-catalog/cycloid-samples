@@ -8,11 +8,6 @@ variable "dg_name" {
   description = "The name of the DG."
 }
 
-variable "cycloid_root_org_canonical" {
-  description = "Canonical of the root Cycloid Organization."
-  default = "cycloid-trials"
-}
-
 variable "cycloid_git_url" {
   description = "Git repository URL for stacks and config."
   default = "trials"

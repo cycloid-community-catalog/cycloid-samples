@@ -1,6 +1,6 @@
 resource "cycloid_organization" "org" {
-  name                   = var.env
-  organization_canonical = var.cycloid_root_org_canonical
+  name                   = var.dg_name
+  organization_canonical = var.cy_org
 
   lifecycle {
     ignore_changes = [organization_canonical]

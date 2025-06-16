@@ -1,0 +1,38 @@
+#
+# Cloud Provider
+#
+
+#. aws_cred (required): ((aws-non-production))
+#+ Amazon credentials containing access key and secret key for Terraform. See value format [here](https://docs.cycloid.io/advanced-guide/integrate-and-use-cycloid-credentials-manager.html#vault-in-the-pipeline)
+aws_cred: ((aws-non-production))
+
+#. aws_default_region (required): eu-west-1
+#+ AWS region to use for Terraform.
+aws_region: eu-west-1
+
+
+##
+# Cycloid
+#
+
+#. cycloid_root_org_jwt (required): ((admin-api-key.key))
+#+ Parent Cycloid organization API key allowing to manage child organizations.
+cycloid_root_org_jwt: ((admin-api-key.key))
+
+
+#
+# GitHub
+#
+
+#. github_pat (required): ''
+#+ GitHub Personal Access Token allowing to manage repositories and user SSH keys. We will create a repository with stacks and config branches as well as an SSH public key stored as Cycloid credential to connect to it.
+github_pat: "((github-pat.key))"
+
+
+#
+# Default variables
+#
+
+#. terraform_version (required): '1.8.5'
+#+ terraform version used to execute your code.
+terraform_version: '1.8.5'

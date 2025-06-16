@@ -18,21 +18,16 @@ variable "aws_region" {
   default     = "eu-west-1"
 }
 
-variable "cycloid_api_url" {
-  type        = string
-  default     = "https://api.cycloid.io/"
-  description = "Cycloid API endpoint"
-}
-
-variable "cycloid_root_org_canonical" {
-  type        = string
-  description = "Cycloid Root Organization Canonical"
-}
-
 variable "cycloid_root_org_jwt" {
   type        = string
   description = "Root Org JWT used for authentication"
   sensitive   = true
+}
+
+variable "cycloid_api_url" {
+  type        = string
+  default     = "https://api.cycloid.io/"
+  description = "Cycloid API endpoint"
 }
 
 variable "github_pat" {

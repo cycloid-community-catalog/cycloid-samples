@@ -27,10 +27,6 @@ module "cycloid-org" {
   #+ The name of the DG
   dg_name = ""
 
-  #. cycloid_root_org_canonical: ''
-  #+ Canonical of the root Cycloid Organization where to create the child organization
-  cycloid_root_org_canonical = var.cycloid_root_org_canonical
-
   #. cycloid_git_url: ''
   #+ Git repository URL for stacks and config
   cycloid_git_url = "git@github.com:cycloid-demo/${github_repository.cycloid-demo.name}.git"
