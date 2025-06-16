@@ -66,6 +66,4 @@ module "cycloid-org" {
   #. azure_cred_child: ''
   #+ Shall we provision an Azure account in the new DG."
   azure_cred_child = var.azure_cred_child
-
-  depends_on = [ github_branch.config ]
 }
