@@ -51,5 +51,5 @@ module "cycloid-org" {
   #+ SSH Key Pair used in newly provisionned workloads
   private_key_openssh = module.tf-backend.aws_private_key_openssh
 
-  depends_on = [ github_branch.config, github_branch.stacks ]
+  depends_on = [ github_branch.config ]
 }
