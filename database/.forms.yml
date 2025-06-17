@@ -32,15 +32,15 @@ use_cases:
               #       "us-west-2",
               #     ]
               #   default: "eu-west-1"
-              - name: "AWS access key"
-                description: "AWS access key which should be used"
-                key: aws_cred
-                type: string
-                widget: cy_cred
-                widget_config:
-                  display_keys: false
-                  cred_types: [aws]
-                default: "((aws_demo_automation_admin))"
+              # - name: "AWS access key"
+              #   description: "AWS access key which should be used"
+              #   key: aws_cred
+              #   type: string
+              #   widget: cy_cred
+              #   widget_config:
+              #     display_keys: false
+              #     cred_types: [aws]
+              #   default: "((aws_demo_automation_admin))"
 
               - name: "Network"
                 key: network_inventory
@@ -130,7 +130,7 @@ use_cases:
                 widget_config:
                   display_keys: false
                   cred_types: [azure]
-                default: "((azure_demo_automation))"
+                default: "((azure-production))"
 
       - name: Database settings
         groups:
