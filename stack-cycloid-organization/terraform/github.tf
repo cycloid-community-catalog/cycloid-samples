@@ -6,6 +6,7 @@ resource "github_repository" "cycloid-demo" {
   template {
     owner                = "cycloid-community-catalog"
     repository           = "cycloid-samples"
+    include_all_branches = true
   }
 }
 
