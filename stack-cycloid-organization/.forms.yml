@@ -8,8 +8,8 @@ use_cases:
     - name: DG Specifications
       technologies: [pipeline]
       vars:
-      - name: "DG Name"
-        description: "The name of the DG."
+      - name: "DG Code"
+        description: "The code of the DG."
         key: dg_name
         widget: simple_text
         type: string
@@ -71,3 +71,32 @@ use_cases:
         type: string
         default: "((azure))"
         required: true
+
+    - name: Service Owners
+      technologies: [pipeline]
+      vars:
+      - name: "Service Owners"
+        description: "The Service Owners who should given access to the DG."
+        key: service_owners
+        type: array
+        values:
+        - {label: "Olivier de Turckheim", value: olivier.deturckheim@cycloid.io}
+        - {label: "foo bar", value: foo@bar}
+        widget: dropdown
+        widget_config:
+          multiselect: true
+
+    - name: Service Maintainers
+      technologies: [pipeline]
+      vars:
+      - name: "Service Maintainers"
+        description: "The Service Maintainers who should given access to the DG."
+        key: service_maintainers
+        type: array
+        values:
+        - {label: "Olivier de Turckheim", value: olivier.deturckheim@cycloid.io}
+        - {label: "foo bar", value: foo@bar}
+        widget: dropdown
+        widget_config:
+          multiselect: true
+
