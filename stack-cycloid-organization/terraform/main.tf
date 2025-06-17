@@ -28,11 +28,11 @@ module "cycloid-org" {
   dg_name = var.dg_name
 
   #. cycloid_git_url: ''
-  #+ Git repository URL for stacks and config
-  cycloid_git_url = "git@github.com:cycloid-community-catalog/cycloid-samples.git"
+  #+ Git repository URL for config
+  cycloid_git_url = "git@github.com:cycloid-demo/digitalservices.git"
 
   #. cycloid_git_ssh_key: ''
-  #+ Git repository SSH private key for stacks and config
+  #+ Git repository SSH private key for config
   cycloid_git_ssh_key = var.cycloid_git_ssh_key
 
   #. cycloid_s3_access_key: ''
