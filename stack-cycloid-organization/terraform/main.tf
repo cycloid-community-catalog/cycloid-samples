@@ -8,9 +8,9 @@ module "tf-backend" {
   cy_component = var.cy_component
   #####################################
 
-  #. dg_name: ""
+  #. is_name: ""
   #+ The name of the DG
-  dg_name = var.dg_name
+  is_name = var.is_name
 }
 
 module "cycloid-org" {
@@ -23,9 +23,9 @@ module "cycloid-org" {
   cy_component = var.cy_component
   #####################################
 
-  #. dg_name: ""
+  #. is_name: ""
   #+ The name of the DG
-  dg_name = var.dg_name
+  is_name = var.is_name
 
   #. cycloid_git_url: ''
   #+ Git repository URL for config

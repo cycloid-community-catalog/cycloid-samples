@@ -10,9 +10,9 @@ aws_cred: ((aws-production))
 #+ AWS region to use for Terraform.
 aws_region: eu-west-1
 
-#. dg_name (required): ''
+#. is_name (required): ''
 #+ The name of the DG.
-dg_name: ""
+is_name: ""
 
 #. aws_sel (required): ''
 #+ Shall we provision an AWS account in the new DG?

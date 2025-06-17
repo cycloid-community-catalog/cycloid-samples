@@ -1,5 +1,5 @@
 resource "cycloid_organization" "org" {
-  name                   = var.dg_name
+  name                   = var.is_name
   organization_canonical = var.cy_org
 
   lifecycle {

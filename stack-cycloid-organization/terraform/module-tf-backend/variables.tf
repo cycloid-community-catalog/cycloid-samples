@@ -4,6 +4,6 @@ variable "cy_project" {}
 variable "cy_env" {}
 variable "cy_component" {}
 
-variable "dg_name" {
+variable "is_name" {
   description = "The name of the DG."
 }

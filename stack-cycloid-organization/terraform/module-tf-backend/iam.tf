@@ -1,9 +1,9 @@
 resource "aws_iam_user" "org" {
-  name = var.dg_name
+  name = var.is_name
   path = "/organization/"
 
   tags = {
-    Name = var.dg_name
+    Name = var.is_name
     role = "user"
   }
 }
@@ -20,14 +20,14 @@ data "aws_iam_policy_document" "org-s3" {
   statement {
     sid       = ""
     effect    = "Allow"
-    resources = ["arn:aws:s3:::${var.dg_name}-terraform-remote-state"]
+    resources = ["arn:aws:s3:::${var.is_name}-terraform-remote-state"]
     actions   = ["s3:ListBucket"]
   }
 
   statement {
     sid       = ""
     effect    = "Allow"
-    resources = ["arn:aws:s3:::${var.dg_name}-terraform-remote-state/*"]
+    resources = ["arn:aws:s3:::${var.is_name}-terraform-remote-state/*"]
 
     actions = [
       "s3:GetObject",

@@ -19,7 +19,7 @@ resource "cycloid_external_backend" "tf_external_backend" {
   purpose = "remote_tfstate"
   engine = "aws_storage"
   aws_storage = {
-    bucket = "${var.dg_name}-terraform-remote-state"
+    bucket = "${var.is_name}-terraform-remote-state"
     region = var.cycloid_s3_region
     endpoint = "https://s3.${var.cycloid_s3_region}.amazonaws.com"
     s3_force_path_style = false

@@ -32,7 +32,7 @@ resources:
     vars:
       aws_cred: ((aws_cred))
       aws_region: ((aws_region))
-      dg_name: ((dg_name))
+      is_name: ((is_name))
       aws_sel: ((aws_sel))
       aws_cred_child: ((aws_cred_child))
       azure_sel: ((azure_sel))

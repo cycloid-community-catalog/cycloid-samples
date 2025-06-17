@@ -1,5 +1,5 @@
 output "bucket_name" {
-  value = "${var.dg_name}-terraform-remote-state"
+  value = "${var.is_name}-terraform-remote-state"
 }
 
 output "iam_user_password" {

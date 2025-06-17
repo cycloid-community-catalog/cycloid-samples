@@ -1,5 +1,5 @@
-output "dg_name" {
-  value     = var.dg_name
+output "is_name" {
+  value     = var.is_name
 }
 
 output "bucket_name" {
