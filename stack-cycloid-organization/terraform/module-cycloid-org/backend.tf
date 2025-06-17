@@ -1,7 +1,7 @@
 resource "cycloid_credential" "s3-cycloid" {
   name                   = "s3-cycloid"
   description            = "AWS IAM user credential allowing access to an S3 bucket used as Terraform backend for your Cycloid organization."
-  organization_canonical = cycloid_organization.org.data.canonical
+  organization_canonical = cycloid_organization.org.canonical
   path                   = "s3-cycloid"
   canonical              = "s3-cycloid"
 
@@ -13,7 +13,7 @@ resource "cycloid_credential" "s3-cycloid" {
 }
 
 resource "cycloid_external_backend" "tf_external_backend" {
-  organization_canonical = cycloid_organization.org.data.canonical
+  organization_canonical = cycloid_organization.org.canonical
   credential_canonical = cycloid_credential.s3-cycloid.canonical
   default = true
   purpose = "remote_tfstate"
