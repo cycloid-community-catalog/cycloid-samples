@@ -1,0 +1,34 @@
+version: "4"
+name: Serverless Function Architecture
+canonical: serverless-function
+author: "florian"
+# Fill in the stack details.
+description: "Allow you to deploy Serverless Function Architecture."
+image: https://static.cycloid.io/serverless.svg
+keywords:
+  - "azure"
+  - "aws"
+  - "digit"
+  - "demo"
+  - "serverless-function"
+template: false
+config:
+  aws:
+    name: "AWS"
+    cloud_provider: aws
+    pipeline:
+      pipeline:
+        path: "pipeline/pipeline.yml"
+      variables:
+        path: "pipeline/variables.sample.yml"
+        destination: "($ .config_root $)/pipeline/variables.yml"
+
+  azure:
+    name: "Azure"
+    cloud_provider: azurerm
+    pipeline:
+      pipeline:
+        path: "pipeline/pipeline.yml"
+      variables:
+        path: "pipeline/variables.sample.yml"
+        destination: "($ .config_root $)/pipeline/variables.yml"
