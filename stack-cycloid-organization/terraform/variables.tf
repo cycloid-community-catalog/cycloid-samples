@@ -35,6 +35,11 @@ variable "azure_cred_child" {
   description = "Contains Azure credentials."
   sensitive   = true
 }
+variable "cycloid_git_ssh_key" {
+  description = "Cycloid Git ssh key"
+  sensitive   = true
+}
+
 variable "cycloid_root_org_jwt" {
   type        = string
   description = "Root Org JWT used for authentication"
@@ -45,10 +50,4 @@ variable "cycloid_api_url" {
   type        = string
   default     = "https://api.cycloid.io/"
   description = "Cycloid API endpoint"
-}
-
-variable "github_pat" {
-  type        = string
-  description = "GitHub Personal Access Token"
-  sensitive   = true
 }

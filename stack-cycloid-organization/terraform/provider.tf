@@ -18,7 +18,3 @@ provider "cycloid" {
   jwt                    = var.cycloid_root_org_jwt
   organization_canonical = var.cy_org
 }
-
-provider "github" {
-  token = var.github_pat
-}

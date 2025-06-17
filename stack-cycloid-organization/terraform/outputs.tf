@@ -2,19 +2,6 @@ output "dg_name" {
   value     = var.dg_name
 }
 
-output "github_ssh_private_key" {
-  value     = tls_private_key.github_generated_key.private_key_openssh
-  sensitive = true
-}
-
-output "github_ssh_public_key" {
-  value     = tls_private_key.github_generated_key.public_key_openssh
-}
-
-output "github_repository_ssh_url" {
-  value = "git@github.com:cycloid-demo/${github_repository.cycloid-demo.name}.git"
-}
-
 output "bucket_name" {
   value = module.tf-backend.bucket_name
 }

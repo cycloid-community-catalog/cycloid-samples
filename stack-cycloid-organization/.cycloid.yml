@@ -5,7 +5,7 @@ canonical: stack-dg
 status: private
 author: Cycloid
 description: |
-  Create a new DG, including a Cycloid Organization with a new GitHub Config repository and a new AWS S3 bucket as Terraform backend, and finally attach the GitHub digit stacks to the new DG.
+  Create a new DG, including a Cycloid Organization with a new AWS S3 bucket as Terraform backend, and attach the DIGIT stacks to the new DG.
 image: |
   https://upload.wikimedia.org/wikipedia/en/2/27/EU_flag_square.PNG
 keywords:

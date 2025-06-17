@@ -39,7 +39,7 @@ resources:
       azure_cred_child: ((azure_cred_child))
       cycloid_root_org_jwt: ((cycloid_root_org_jwt))
       cycloid_api_url: ($ .api_url $)
-      github_pat: ((github_pat))
+      cycloid_git_ssh_key: ((git-cycloid.ssh_key))
       cy_org: ($ .org $)
       cy_project: ($ .project $)
       cy_env: ($ .env $)

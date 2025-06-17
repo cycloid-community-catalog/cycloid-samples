@@ -12,7 +12,7 @@ resource "cycloid_credential" "git-ssh" {
 }
 
 resource "cycloid_catalog_repository" "catalog_repo" {
-  name                   = "Your Catalog Repository"
+  name                   = "DIGIT Repository"
   branch                 = "stacks-is"
   url                    = var.cycloid_git_url
   credential_canonical   = cycloid_credential.git-ssh.canonical
@@ -20,7 +20,7 @@ resource "cycloid_catalog_repository" "catalog_repo" {
 }
 
 resource "cycloid_config_repository" "config_repo" {
-  name                   = "Your Config Repository"
+  name                   = "DIGIT Repository"
   branch                 = "config"
   default                = true
   url                    = var.cycloid_git_url
