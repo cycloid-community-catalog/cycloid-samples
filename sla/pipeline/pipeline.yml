@@ -3,18 +3,17 @@ resources:
   type: git
   icon: github-circle
   source:
-    uri: ($ .config_repository_url $)
-    branch: ($ .config_repository_branch $)
-    ($- if eq .config_repository_credential_type "basic_auth" $)
-    username: ((($ .config_repository_credential_path $).username))
-    password: ((($ .config_repository_credential_path $).password))
+    uri: ($ .cr_url $)
+    branch: ($ .cr_branch $)
+    ($- if eq .cr_cred_type "basic_auth" $)
+    username: ((($ .cr_cred_path $).username))
+    password: ((($ .cr_cred_path $).password))
     ($- end $)
-    ($- if eq .config_repository_credential_type "ssh" $)
-    private_key: ((($ .config_repository_credential_path $).ssh_key))
+    ($- if eq .cr_cred_type "ssh" $)
+    private_key: ((($ .cr_cred_path $).ssh_key))
     ($- end $)
-    # Include only the Terraform files in the specified directory.
     paths:
-      - ($ .config_root $)/terraform/*
+      - ($ .org $)/($ .project $)/($ .env $)/($ .component $)/pipeline/*
 
 jobs:
 - name: save-sla
