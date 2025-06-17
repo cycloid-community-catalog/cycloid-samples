@@ -13,7 +13,7 @@ resource "cycloid_credential" "git-ssh" {
 
 resource "cycloid_catalog_repository" "catalog_repo" {
   name                   = "Your Catalog Repository"
-  branch                 = "stacks"
+  branch                 = "stacks-is"
   url                    = var.cycloid_git_url
   credential_canonical   = cycloid_credential.git-ssh.canonical
   organization_canonical = lower(var.dg_name)
