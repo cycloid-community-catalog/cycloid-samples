@@ -1,0 +1,19 @@
+# Define jobs that form the pipeline
+jobs:
+  - name: Deploy
+    build_logs_to_retain: 12
+    plan:
+      - task: tfstate
+        config:
+          platform: linux
+          image_resource:
+            type: registry-image
+            source: { repository: busybox }
+          run:
+            path: sh
+            args:
+              - -ec
+              - |
+                echo "Deploying infrastructure"
+                sleep 300
+                exit 0
