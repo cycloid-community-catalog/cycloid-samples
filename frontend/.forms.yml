@@ -3,7 +3,7 @@
 use_cases:
   - name: aws
     sections:
-      - name: Cloud provider
+      - name: Configurations
         groups:
           - name: Infrastructure
             technologies: [pipeline]

@@ -123,8 +123,8 @@ resources:
   type: registry-image
   icon: docker
   source:
-    repository: "cycloid/spring-framework-petclinic"
-    tag: latest
+    repository: "talset/spring-framework-petclinic"
+    tag: ((web_image_version))
     # username: nologin
     # password: ((ecr.secret_key))
 

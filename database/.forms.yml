@@ -3,7 +3,7 @@
 use_cases:
   - name: aws
     sections:
-      - name: Infrastructure
+      - name: Configurations
         groups:
           - name: Access
             technologies: [pipeline]
@@ -25,9 +25,7 @@ use_cases:
                     # attributes: 'arn[rlike]="*:${aws_default_region}:*'
                 required: true
 
-      - name: Database
-        groups:
-          - name: Configuration
+          - name: Database
             technologies: [terraform]
             vars:
               - name: "Engine version"

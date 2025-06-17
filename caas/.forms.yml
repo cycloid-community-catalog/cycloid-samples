@@ -3,7 +3,7 @@
 use_cases:
   - name: aws
     sections:
-      - name: Cloud provider
+      - name: Configurations
         groups:
           - name: Infrastructure
             technologies: [pipeline]
@@ -23,18 +23,30 @@ use_cases:
                     # attributes: 'arn[rlike]="*:${aws_default_region}:*'
                 required: true
 
-      - name: Container Service
-        groups:
-          - name: Configuration
-            technologies: [terraform]
+          - name: Application
+            technologies: [pipeline]
             vars:
-              - name: "Additional environnement variables"
-                description: "Provide additional environnement variables"
-                key: web_env
+              - name: "Gitlab Project"
+                description: "Gitlab project associeted to the application"
+                key: demo_gitlab_project
                 widget: text_area
-                type: map
-                default:
-                  MY_ENV_VAR: my_value
+                type: simple_text
+                default: ($ .project $)
+
+              - name: "Application Version"
+                description: "Version of your application to deploy"
+                key: web_image_version
+                widget: text_area
+                type: simple_text
+                default: "latest"
+
+              # - name: "Additional environnement variables"
+              #   description: "Provide additional environnement variables"
+              #   key: web_env
+              #   widget: text_area
+              #   type: map
+              #   default:
+              #     MY_ENV_VAR: my_value
 
   - name: azure
     sections:
