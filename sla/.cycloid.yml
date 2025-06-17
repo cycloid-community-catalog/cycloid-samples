@@ -1,0 +1,25 @@
+version: "4"
+name: SLA
+canonical: sla
+author: "cycloid"
+# Fill in the stack details.
+description: "Create SLA requirements."
+image: https://cdn-icons-png.flaticon.com/512/4753/4753100.png
+keywords:
+  - "terraform"
+  - "sla"
+  - "digit"
+technologies:
+  - technology: terraform
+    version: 1.11.4
+template: false
+# Add use cases to the stack.
+# See: https://docs.cycloid.io/manage/pipeline/multi-use-case.html#multiple-use-case
+config:
+  default:
+    pipeline:
+      pipeline:
+        path: "pipeline/pipeline.yml"
+      variables:
+        path: "pipeline/variables.sample.yml"
+        destination: "($ .config_root $)/pipeline/variables.yml"
