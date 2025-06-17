@@ -112,3 +112,11 @@ use_cases:
         widget_config:
           multiselect: true
 
+    - name: Network
+      technologies: [pipeline]
+      vars:
+      - name: "Network Pre-Provisioning"
+        description: "Whether Network resources shall be pre-provisionned for this IS."
+        key: network_provisioning
+        type: boolean
+        widget: switch
