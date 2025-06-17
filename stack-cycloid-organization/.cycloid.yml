@@ -1,11 +1,11 @@
 ---
 version: '4'
-name: DG
-canonical: stack-cycloid-organization
+name: IS
+canonical: stack-is
 status: private
 author: Cycloid
 description: |
-  Create a new DG, including a Cycloid Organization with a new GitHub Config repository and a new AWS S3 bucket as Terraform backend, and finally attach the GitHub digit stacks to the new DG.
+  Create a new IS, including a Cycloid Organization with a new GitHub Config repository and a new AWS S3 bucket as Terraform backend, and finally attach the GitHub digit stacks to the new IS.
 image: |
   https://upload.wikimedia.org/wikipedia/en/2/27/EU_flag_square.PNG
 keywords:
