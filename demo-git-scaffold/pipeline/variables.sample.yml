@@ -1,0 +1,41 @@
+
+#
+# GitHub
+#
+
+#. github_pat (required): ''
+#+ GitHub Personal Access Token allowing to manage repositories and user SSH keys. We will create a repository with stacks and config branches as well as an SSH public key stored as Cycloid credential to connect to it.
+github_pat: "((github-pat.key))"
+
+#
+# Application Source
+#
+
+#. git_source_url (required): "https://github.com/cycloid-community-catalog/onboarding-scaffold.git"
+#+ The public git repo source URL to copy for the first commit.
+git_source_url: "https://github.com/cycloid-community-catalog/onboarding-scaffold.git"
+
+#. git_source_url (required): "express"
+#+ The path in the public git repo to copy for the first commit.
+git_source_path: "express"
+
+#. git_dest_url (required): "git@github.com:cycloid-demo/($ .project $)-($ .env $).git"
+#+ The url of the destination scaffolded git repo.
+git_dest_url: "git@github.com:cycloid-demo/($ .project $)-($ .env $).git"
+
+#. git_dest_key (required): ((($ .project $)-($ .env $)-git-ssh.ssh_key))
+#+ The ssh key of the destination scaffolded git repo.
+git_dest_key: ((($ .project $)-($ .env $)-git-ssh.ssh_key))
+
+
+#
+# Default variables
+#
+
+#. cy_api_key (required): ((admin-api-key.key))
+#+ API key to grant admin acess to Cycloid API.
+cy_api_key: ((admin-api-key.key))
+
+#. terraform_version (required): '1.8.5'
+#+ terraform version used to execute your code.
+terraform_version: '1.8.5'

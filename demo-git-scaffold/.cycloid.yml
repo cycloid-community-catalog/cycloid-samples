@@ -1,0 +1,33 @@
+---
+# Configuration of the Cycloid stack
+version: '4'
+name: 'Scaffold Software Project'
+canonical: demo-git-scaffold
+author: Cycloid
+description: |
+  Create a Git repository and scaffold a new project with my organization best practices and security rules.
+image: |
+  https://cycloid-demo-stacks-logo.s3.eu-west-1.amazonaws.com/git.png
+keywords:
+  - 'VueJS'
+  - 'git'
+  - 'IDP'
+  - 'Internal Developer Platform'
+  - 'developer'
+  - 'application'
+technologies:
+- technology: terraform
+  version: 1.8.3
+
+config:
+  default:
+    pipeline:
+      pipeline:
+        path: pipeline/pipeline.yml
+      variables:
+        path: pipeline/variables.sample.yml
+        destination: '($ .org $)/($ .project $)/($ .env $)/($ .component $)/variables.yml'
+    terraform:
+      main:
+        path: 'terraform/main.tf'
+        destination: '($ .org $)/($ .project $)/($ .env $)/($ .component $)/terraform/main.tf'
