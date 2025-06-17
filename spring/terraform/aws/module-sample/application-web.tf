@@ -29,7 +29,8 @@ variable "deployment_minimum_healthy_percent" {
 
 variable "web_image" {
   # default = "springcommunity/spring-framework-petclinic:latest"
-  default = "cycloid/spring-framework-petclinic:latest"
+  # default = "cycloid/spring-framework-petclinic:latest"
+  default = "talset/spring-framework-petclinic:latest"
 }
 
 variable "web_image_digest" {

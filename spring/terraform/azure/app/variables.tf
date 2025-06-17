@@ -12,7 +12,7 @@ variable "app_name" {
 
 variable "app_image" {
   type    = string
-  default = "cycloid/spring-framework-petclinic"
+  default = "talset/spring-framework-petclinic"
 }
 
 variable "app_resources" {
