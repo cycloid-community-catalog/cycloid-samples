@@ -29,11 +29,11 @@ module "cycloid-org" {
 
   #. cycloid_git_url: ''
   #+ Git repository URL for stacks and config
-  cycloid_git_url = "git@github.com:cycloid-demo/${github_repository.cycloid-demo.name}.git"
+  cycloid_git_url = "git@github.com:cycloid-community-catalog/cycloid-samples.git"
 
   #. cycloid_git_ssh_key: ''
   #+ Git repository SSH private key for stacks and config
-  cycloid_git_ssh_key = tls_private_key.github_generated_key.private_key_openssh
+  cycloid_git_ssh_key = var.cycloid_git_ssh_key
 
   #. cycloid_s3_access_key: ''
   #+ S3 bucket access_key for Terraform state files

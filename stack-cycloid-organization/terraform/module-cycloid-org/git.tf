@@ -1,7 +1,7 @@
 resource "cycloid_credential" "git-ssh" {
   name                   = "git-cycloid"
   description            = "SSH private key allowing access to a git repository used as Catalog and Config repositories for your Cycloid organization."
-  organization_canonical = lower(var.dg_name)
+  organization_canonical = cycloid_organization.org.canonical
   path                   = "git-cycloid"
   canonical              = "git-cycloid"
 
@@ -12,18 +12,18 @@ resource "cycloid_credential" "git-ssh" {
 }
 
 resource "cycloid_catalog_repository" "catalog_repo" {
-  name                   = "Your Catalog Repository"
+  name                   = "DIGIT Repository"
   branch                 = "stacks"
   url                    = var.cycloid_git_url
   credential_canonical   = cycloid_credential.git-ssh.canonical
-  organization_canonical = lower(var.dg_name)
+  organization_canonical = cycloid_organization.org.canonical
 }
 
 resource "cycloid_config_repository" "config_repo" {
-  name                   = "Your Config Repository"
+  name                   = "DIGIT Repository"
   branch                 = "config"
   default                = true
   url                    = var.cycloid_git_url
   credential_canonical   = cycloid_credential.git-ssh.canonical
-  organization_canonical = lower(var.dg_name)
+  organization_canonical = cycloid_organization.org.canonical
 }

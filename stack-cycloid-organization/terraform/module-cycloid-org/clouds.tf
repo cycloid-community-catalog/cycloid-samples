@@ -3,7 +3,7 @@ resource "cycloid_credential" "aws" {
 
   name                   = "aws-production"
   description            = "The AWS account for the DG."
-  organization_canonical = lower(var.dg_name)
+  organization_canonical = cycloid_organization.org.canonical
   path                   = "aws-production"
   canonical              = "aws-production"
 
@@ -19,7 +19,7 @@ resource "cycloid_credential" "azure" {
 
   name                   = "azure-production"
   description            = "The Azure account for the DG."
-  organization_canonical = lower(var.dg_name)
+  organization_canonical = cycloid_organization.org.canonical
   path                   = "azure-production"
   canonical              = "azure-production"
 
