@@ -11,7 +11,7 @@ use_cases:
       - name: "IS Code"
         description: "The code of the IS."
         key: is_name
-        wiISet: simple_text
+        widget: simple_text
         type: string
         validations: 
         - regexp: "^[a-z0-9-]+$" 
@@ -24,7 +24,7 @@ use_cases:
       - name: "Provision an AWS account in the new IS?"
         description: "Shall we provision an AWS account in the new IS?"
         key: aws_sel
-        wiISet: switch
+        widget: switch
         type: boolean
         value: false
         required: false
@@ -36,8 +36,8 @@ use_cases:
       - name: "AWS Account"
         description: "The AWS account where the IS could deploy the infrastructure."
         key: aws_cred_child
-        wiISet: cy_cred
-        wiISet_config:
+        widget: cy_cred
+        widget_config:
           display_keys: false
           cred_types:
             - aws
@@ -51,7 +51,7 @@ use_cases:
       - name: "Provision an Azure account in the new IS?"
         description: "Shall we provision an Azure account in the new IS?"
         key: azure_sel
-        wiISet: switch
+        widget: switch
         type: boolean
         value: false
         required: false
@@ -63,8 +63,8 @@ use_cases:
       - name: "Azure Account"
         description: "The Azure account where the IS could deploy the infrastructure."
         key: azure_cred_child
-        wiISet: cy_cred
-        wiISet_config:
+        widget: cy_cred
+        widget_config:
           display_keys: false
           cred_types:
             - azure
@@ -88,8 +88,8 @@ use_cases:
         - {label: "Inalinda Fonseca", value: inalinda.fonseca@ext.ec.europa.eu}
         - {label: "Pierre Schrepel", value: pierre.schrepel@ext.ec.europa.eu}
         - {label: "Olivier de Turckheim", value: olivier.deturckheim@cycloid.io}
-        wiISet: dropdown
-        wiISet_config:
+        widget: dropdown
+        widget_config:
           multiselect: true
 
     - name: Customer Users
@@ -108,7 +108,7 @@ use_cases:
         - {label: "Inalinda Fonseca", value: inalinda.fonseca@ext.ec.europa.eu}
         - {label: "Pierre Schrepel", value: pierre.schrepel@ext.ec.europa.eu}
         - {label: "Olivier de Turckheim", value: olivier.deturckheim@cycloid.io}
-        wiISet: dropdown
-        wiISet_config:
+        widget: dropdown
+        widget_config:
           multiselect: true
 
