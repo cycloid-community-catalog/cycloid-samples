@@ -2,9 +2,9 @@
 # Pipeline Variables
 #
 
-#. aws_cred (required): ((aws-non-production))
+#. aws_cred (required): ((aws-production))
 #+ Amazon credentials containing access key and secret key for Terraform. See value format [here](https://docs.cycloid.io/advanced-guide/integrate-and-use-cycloid-credentials-manager.html#vault-in-the-pipeline)
-aws_cred: ((aws-non-production))
+aws_cred: ((aws-production))
 
 #. aws_default_region (required): eu-west-1
 #+ AWS region to use for Terraform.
@@ -26,7 +26,7 @@ aws_cred_child: ""
 #+ Shall we provision an Azure account in the new DG?
 azure_sel: ""
 
-#. azure_cred_child (required): ((aws-non-production))
+#. azure_cred_child (required): ""
 #+ Azure credentials to provision in the child organization.
 azure_cred_child: ""
 
