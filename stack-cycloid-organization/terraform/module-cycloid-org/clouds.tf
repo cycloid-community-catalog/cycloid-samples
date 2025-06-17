@@ -1,11 +1,11 @@
 resource "cycloid_credential" "aws" {
   count = var.aws_sel ? 1 : 0
 
-  name                   = "aws-dg"
+  name                   = "aws-production"
   description            = "The AWS account for the DG."
   organization_canonical = lower(var.dg_name)
-  path                   = "aws-dg"
-  canonical              = "aws-dg"
+  path                   = "aws-production"
+  canonical              = "aws-production"
 
   type = "aws"
   body = {
@@ -17,11 +17,11 @@ resource "cycloid_credential" "aws" {
 resource "cycloid_credential" "azure" {
   count = var.azure_sel ? 1 : 0
 
-  name                   = "azure-dg"
+  name                   = "azure-production"
   description            = "The Azure account for the DG."
   organization_canonical = lower(var.dg_name)
-  path                   = "azure-dg"
-  canonical              = "azure-dg"
+  path                   = "azure-production"
+  canonical              = "azure-production"
 
   type = "azure"
   body = {
