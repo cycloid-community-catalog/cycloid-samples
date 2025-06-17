@@ -1,0 +1,51 @@
+version: "4"
+name: Relational database
+canonical: database
+author: "cycloid-gael"
+# Fill in the stack details.
+description: "Create a relational Database as a service."
+image: https://static.cycloid.io/postgresql.svg
+keywords:
+  - "terraform"
+  - "aws"
+  - "digit"
+  - "spring"
+  - "database"
+  - "postgres"
+  - "aurora"
+technologies:
+- technology: terraform
+  version: 1.11.4
+template: false
+# Add use cases to the stack.
+# See: https://docs.cycloid.io/manage/pipeline/multi-use-case.html#multiple-use-case
+config:
+  aws:
+    name: "AWS"
+    description: "Manage Amazon RDS Aurora service."
+    cloud_provider: aws
+    pipeline:
+      pipeline:
+        path: "pipeline/pipeline.yml"
+      variables:
+        path: "pipeline/variables.sample.yml"
+        destination: "($ .config_root $)/pipeline/variables.yml"
+    terraform:
+      main:
+        path: "terraform/aws/main.tf.sample"
+        destination: "($ .config_root $)/terraform/main.tf"
+
+  azure:
+    name: "Azure"
+    description: "Manage Azure Database (azurerm) resources."
+    cloud_provider: azurerm
+    pipeline:
+      pipeline:
+        path: "pipeline/pipeline.yml"
+      variables:
+        path: "pipeline/variables.sample.yml"
+        destination: "($ .config_root $)/pipeline/variables.yml"
+    terraform:
+      main:
+        path: "terraform/azure/main.tf.sample"
+        destination: "($ .config_root $)/terraform/main.tf"

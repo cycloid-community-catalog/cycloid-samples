@@ -1,0 +1,34 @@
+version: "4"
+name: Faas
+canonical: faas
+author: "florian"
+# Fill in the stack details.
+description: "Allow you to deploy Function-as-a-Service."
+image: https://static.cycloid.io/faas.png
+keywords:
+  - "azure"
+  - "aws"
+  - "digit"
+  - "demo"
+  - "faas"
+template: false
+config:
+  aws:
+    name: "AWS"
+    cloud_provider: aws
+    pipeline:
+      pipeline:
+        path: "pipeline/pipeline.yml"
+      variables:
+        path: "pipeline/variables.sample.yml"
+        destination: "($ .config_root $)/pipeline/variables.yml"
+
+  azure:
+    name: "Azure"
+    cloud_provider: azurerm
+    pipeline:
+      pipeline:
+        path: "pipeline/pipeline.yml"
+      variables:
+        path: "pipeline/variables.sample.yml"
+        destination: "($ .config_root $)/pipeline/variables.yml"

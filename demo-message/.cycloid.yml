@@ -1,0 +1,34 @@
+version: "4"
+name: Message Broker
+canonical: message-broker
+author: "florian"
+# Fill in the stack details.
+description: "Allow you to deploy Message Broker."
+image: https://static.cycloid.io/bus-topics.svg
+keywords:
+  - "azure"
+  - "aws"
+  - "digit"
+  - "demo"
+  - "message-broker"
+template: false
+config:
+  aws:
+    name: "AWS"
+    cloud_provider: aws
+    pipeline:
+      pipeline:
+        path: "pipeline/pipeline.yml"
+      variables:
+        path: "pipeline/variables.sample.yml"
+        destination: "($ .config_root $)/pipeline/variables.yml"
+
+  azure:
+    name: "Azure"
+    cloud_provider: azurerm
+    pipeline:
+      pipeline:
+        path: "pipeline/pipeline.yml"
+      variables:
+        path: "pipeline/variables.sample.yml"
+        destination: "($ .config_root $)/pipeline/variables.yml"

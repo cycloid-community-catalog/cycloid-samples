@@ -1,0 +1,11 @@
+module "app" {
+  source = "./app"
+
+  # Vars automatically defined in provider.tf for best practices.
+  # They are usually used to tag cloud resources with Cycloid information
+  component          = var.component
+  environment        = var.env
+  project            = var.project
+  organization       = var.organization
+  app_image          = var.app_image
+}

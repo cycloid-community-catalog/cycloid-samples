@@ -1,0 +1,7 @@
+module "database" {
+  source       = "./database"
+  component    = var.component
+  environment  = var.env
+  project      = var.project
+  organization = var.organization
+}

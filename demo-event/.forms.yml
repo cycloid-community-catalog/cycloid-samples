@@ -1,0 +1,28 @@
+use_cases:
+  - name: aws
+    sections:
+      - name: Example section
+        groups:
+          - name: Example group
+            technologies: [pipeline]
+            vars:
+              - name: "Message"
+                description: "A message echoed during pipeline runs."
+                key: message
+                type: string
+                widget: simple_text
+                default: "hello world"
+
+  - name: azure
+    sections:
+      - name: Example section
+        groups:
+          - name: Example group
+            technologies: [pipeline]
+            vars:
+              - name: "Message"
+                description: "A message echoed during pipeline runs."
+                key: message
+                type: string
+                widget: simple_text
+                default: "hello world"

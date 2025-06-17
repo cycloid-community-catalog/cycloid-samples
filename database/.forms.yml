@@ -1,0 +1,188 @@
+# Define the stack configuration form and organize inputs of various types into sections and groups.
+# See: https://docs.staging.cycloid.io/deploy/stackforms/file-format.html
+use_cases:
+  - name: aws
+    sections:
+      - name: Cloud provider
+        groups:
+          - name: Access
+            technologies: [pipeline]
+            vars:
+              # - name: "Aws region"
+              #   key: aws_default_region
+              #   type: string
+              #   widget: auto_complete
+              #   values:
+              #     [
+              #       "eu-north-1",
+              #       "ap-south-1",
+              #       "eu-west-3",
+              #       "eu-west-2",
+              #       "eu-west-1",
+              #       "ap-northeast-2",
+              #       "ap-northeast-1",
+              #       "sa-east-1",
+              #       "ca-central-1",
+              #       "ap-southeast-1",
+              #       "ap-southeast-2",
+              #       "eu-central-1",
+              #       "us-east-1",
+              #       "us-east-2",
+              #       "us-west-1",
+              #       "us-west-2",
+              #     ]
+              #   default: "eu-west-1"
+              - name: "AWS access key"
+                description: "AWS access key which should be used"
+                key: aws_cred
+                type: string
+                widget: cy_cred
+                widget_config:
+                  display_keys: false
+                  cred_types: [aws]
+                default: "((aws_demo_automation_admin))"
+
+              - name: "Network"
+                key: network_inventory
+                type: "string"
+                widget: cy_inventory_resource
+                widget_config:
+                  attribute: arn
+                  filters:
+                    # project: digit-network
+                    provider: aws
+                    project: ($ .project $)
+                    environment: ($ .environment $)
+                    type: aws_vpc
+                    #attributes: "arn[rlike]=*:${aws_default_region}:*"
+                    # attributes: 'arn[rlike]="*:${aws_default_region}:*'
+                required: true
+
+      - name: Infrastructure
+        groups:
+          - name: Configuration
+            technologies: [terraform]
+            vars:
+              - name: "Engine version"
+                description: "Postgres engine version."
+                key: postgres_engine_version
+                widget: auto_complete
+                type: string
+                default: "16"
+                values: ["11", "12", "13", "14", "15", "16", "17"]
+
+              - name: "Type"
+                description: "Type of AWS RDS database."
+                key: postgres_type
+                widget: auto_complete
+                type: map
+                values:
+                  - { label: bCU1, value: "db.t3.medium" }
+                  - { label: bCU2, value: "db.t3.large" }
+                  - { label: bCU3, value: "db.t3.xlarge" }
+                  - { label: bCU4, value: "db.t3.2xlarge" }
+                  - { label: CU1, value: "db.t4.medium" }
+                  - { label: CU2, value: "db.t4.large" }
+                  - { label: CU3, value: "db.t4.xlarge" }
+                  - { label: CU4, value: "db.t4.2xlarge" }
+                default: bCU1
+
+                # bCU Compute Unit for burstable applications
+                #     bCU1 - 2vCPU x 0.5GiB
+                #     bCU2 - 2vCPU x 1GiB
+                #     bCU3 - 2vCPU x 2GiB
+                #     bCU4 - 2vCPU x 4GiB
+                #     -
+                # CU Compute Unit for general applications
+                #     CU1 - 1vCPU x 4GiB
+                #     CU2 - 2vCPU x 8GiB
+                #     CU4 - 4vCPU x 16GiB
+                #     CU8 - 8vCPU x 32GiB
+
+          - name: Backup
+            technologies: [terraform]
+            vars:
+              - name: "Retention"
+                description: "Snapshot retention in days"
+                key: postgres_backup_retention
+                widget: number
+                type: integer
+                default: 7
+
+  - name: azure
+    sections:
+      - name: Cloud provider
+        groups:
+          - name: Access
+            technologies: [pipeline]
+            vars:
+              - name: "Azure environment"
+                description: "The Cloud Environment which should be used"
+                key: azure_env
+                type: string
+                widget: radios
+                values: ["public", "china", "german", "stack", "usgovernment"]
+                default: "public"
+              - name: "Azure credential"
+                key: azure_cred
+                type: string
+                widget: cy_cred
+                widget_config:
+                  display_keys: false
+                  cred_types: [azure]
+                default: "((azure_demo_automation))"
+
+      - name: Database settings
+        groups:
+          - name: Configuration
+            technologies: [terraform]
+            vars:
+              - name: "Virtual network"
+                key: virtual_network_name
+                type: string
+                widget: cy_inventory_resource
+                widget_config:
+                  attribute: name
+                  filters:
+                    project: ($ .project $)
+                    environment: ($ .environment $)
+                    provider: azurerm
+                    type: azurerm_virtual_network
+                required: true
+                default: "main-network"
+              - name: "Database size"
+                description: "The size of the database server."
+                key: module.database.sku
+                type: map
+                widget: slider_list
+                values:
+                  - { label: "Dev S", value: "B_Standard_B1ms" }
+                  - { label: "Dev M", value: "B_Standard_B2s" }
+                  - { label: "Dev L", value: "B_Standard_B4ms" }
+                default: "Dev S"
+              - name: "Backup retention"
+                unit: days
+                key: backup_retention_days
+                type: integer
+                widget: slider_range
+                values: [7, 35]
+              - name: "Database user"
+                key: user
+                widget: hidden
+                type: string
+                default: petclinic
+              - name: "Database name"
+                key: database
+                widget: hidden
+                type: string
+                default: petclinic
+              - name: "Database version"
+                key: engine_version
+                widget: hidden
+                type: string
+                default: "16"
+              - name: "Resource group name"
+                key: resource_group_name
+                widget: hidden
+                type: string
+                default: "($ .organization $)-($ .project $)-($ .environment $)"

@@ -1,0 +1,34 @@
+version: "4"
+name: Event-Streaming
+canonical: event-streaming
+author: "florian"
+# Fill in the stack details.
+description: "Allow you to deploy Event-Streaming."
+image: https://static.cycloid.io/event.svg
+keywords:
+  - "azure"
+  - "aws"
+  - "digit"
+  - "demo"
+  - "event-streaming"
+template: false
+config:
+  aws:
+    name: "AWS"
+    cloud_provider: aws
+    pipeline:
+      pipeline:
+        path: "pipeline/pipeline.yml"
+      variables:
+        path: "pipeline/variables.sample.yml"
+        destination: "($ .config_root $)/pipeline/variables.yml"
+
+  azure:
+    name: "Azure"
+    cloud_provider: azurerm
+    pipeline:
+      pipeline:
+        path: "pipeline/pipeline.yml"
+      variables:
+        path: "pipeline/variables.sample.yml"
+        destination: "($ .config_root $)/pipeline/variables.yml"
