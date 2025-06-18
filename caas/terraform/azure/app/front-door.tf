@@ -1,6 +1,3 @@
-locals {
-  app_name = var.component
-}
 resource "azurerm_cdn_frontdoor_profile" "app" {
   name                = "front-door-${local.app_name}"
   resource_group_name = data.azurerm_resource_group.current.name
