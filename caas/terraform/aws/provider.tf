@@ -47,3 +47,4 @@ locals {
 
 variable "web_image" {}
 variable "web_image_digest" {}
+variable "web_image_version" {}

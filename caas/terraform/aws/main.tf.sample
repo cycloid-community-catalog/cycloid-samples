@@ -11,6 +11,7 @@ module "spring" {
   aws_region                  = local.database_region
   database_cluster_identifier = local.database_cluster_identifier
   web_image                   = var.web_image
+  web_image_version           = var.web_image_version
   web_image_digest            = var.web_image_digest
 
 #  vpc_id                        = module.vpc.vpc_id

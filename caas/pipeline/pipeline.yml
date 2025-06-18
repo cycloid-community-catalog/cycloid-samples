@@ -24,7 +24,9 @@ definitions:
               if [[ -d "./image/" ]]; then
                 echo -e "# \e[33mReading image\e[0m"
                 echo "Adding terraform variable: web_image"
-                echo "web_image = \"$IMAGE_REPO:$(cat image/tag)\"" >> merged-stack/terraform.tfvars
+                echo "web_image = \"$IMAGE_REPO\"" >> merged-stack/terraform.tfvars
+                echo "Adding terraform variable: web_image_version"
+                echo "web_image_version = \"$(cat image/tag)\"" >> merged-stack/terraform.tfvars
                 echo "Adding terraform variable: web_image_digest"
                 echo "web_image_digest = \"$(cat image/digest)\"" >> merged-stack/terraform.tfvars
                 cat merged-stack/terraform.tfvars
