@@ -28,7 +28,7 @@ variable "postgres_multiaz" {
 # }
 
 variable "postgres_allow_major_version_upgrade" {
-  default = false
+  default = true
 }
 
 resource "random_password" "postgres_password" {
