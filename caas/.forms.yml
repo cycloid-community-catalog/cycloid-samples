@@ -59,7 +59,7 @@ use_cases:
                     provider: azurerm
                     type: azurerm_postgresql_flexible_server
                 required: true
-                default: "db-postgres"
+                default: "postgres-($ .project $)-($ .environment $)"
 
           - name: Application
             technologies: [pipeline]

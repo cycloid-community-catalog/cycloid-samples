@@ -53,7 +53,7 @@ locals {
 }
 
 resource "azurerm_postgresql_flexible_server" "db" {
-  name                          = "db-postgres"
+  name                          = "postgres-${var.project}-${var.environment}"
   tags                          = local.default_tags
   resource_group_name           = local.resource_group_name
   location                      = data.azurerm_resource_group.current.location
