@@ -77,7 +77,7 @@ resources:
       # aws_region: ((aws_default_region)) # determined with database_inventory
       database_inventory: ((database_inventory))
       ($- else if eq .use_case "azure" $)
-      azure_env: ((azure_env))
+      azure_env: "public"
       azure_cred: ((azure-production))
       ($- end $)
 

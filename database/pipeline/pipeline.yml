@@ -60,7 +60,7 @@ resources:
       network_inventory: ((network_inventory))
       # aws_region: ((aws_default_region))
       ($- else if eq .use_case "azure" $)
-      azure_env: ((azure_env))
+      azure_env: "public"
       azure_cred: ((azure-production))
       ($- end $)
 

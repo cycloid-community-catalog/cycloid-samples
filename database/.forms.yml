@@ -76,30 +76,9 @@ use_cases:
 
   - name: azure
     sections:
-      - name: Cloud provider
+      - name: Database
         groups:
-          - name: Access
-            technologies: [pipeline]
-            vars:
-              - name: "Azure environment"
-                description: "The Cloud Environment which should be used"
-                key: azure_env
-                type: string
-                widget: radios
-                values: ["public", "china", "german", "stack", "usgovernment"]
-                default: "public"
-              - name: "Azure credential"
-                key: azure_cred
-                type: string
-                widget: cy_cred
-                widget_config:
-                  display_keys: false
-                  cred_types: [azure]
-                default: "((azure-production))"
-
-      - name: Database settings
-        groups:
-          - name: Configuration
+          - name: Settings
             technologies: [terraform]
             vars:
               - name: "Virtual network"
@@ -115,22 +94,28 @@ use_cases:
                     type: azurerm_virtual_network
                 required: true
                 default: "main-network"
-              - name: "Database size"
+              - name: "Type"
                 description: "The size of the database server."
                 key: module.database.sku
                 type: map
-                widget: slider_list
+                widget: auto_complete
                 values:
-                  - { label: "Dev S", value: "B_Standard_B1ms" }
-                  - { label: "Dev M", value: "B_Standard_B2s" }
-                  - { label: "Dev L", value: "B_Standard_B4ms" }
-                default: "Dev S"
+                  - { label: "bCU1", value: "B_Standard_B1ms" }
+                  - { label: "bCU2", value: "B_Standard_B2s" }
+                  - { label: "bCU3", value: "B_Standard_B4ms" }
+                  - { label: "bCU4", value: "B_Standard_B4ms" }
+                  - { label: "CU1", value: "B_Standard_B1ms" }
+                  - { label: "CU2", value: "B_Standard_B2s" }
+                  - { label: "CU3", value: "B_Standard_B4ms" }
+                  - { label: "CU4", value: "B_Standard_B4ms" }
+                default: "bCU1"
               - name: "Backup retention"
                 unit: days
                 key: backup_retention_days
                 type: integer
                 widget: slider_range
                 values: [7, 35]
+
               - name: "Database user"
                 key: user
                 widget: hidden
