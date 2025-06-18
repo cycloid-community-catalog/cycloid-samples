@@ -39,5 +39,5 @@ variable "web_image_digest" {
 }
 
 locals {
-  image_tag = one(split(":", var.web_image_digest))
+  image_tag = var.web_image_version
 }
