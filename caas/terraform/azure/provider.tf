@@ -37,3 +37,7 @@ variable "web_image_digest" {
   type = string
   #default = "latest"
 }
+
+locals {
+  image_tag = one(split(":", var.web_image_digest))
+}

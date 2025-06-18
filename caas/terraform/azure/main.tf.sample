@@ -7,5 +7,5 @@ module "app" {
   environment        = var.env
   project            = var.project
   organization       = var.organization
-  app_image          = "${var.web_image}:${split(":", var.web_image_digest)[0]}"
+  app_image          = "${var.web_image}:${local.image_tag}"
 }
