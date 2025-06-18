@@ -28,7 +28,12 @@ variable "azure_env" {
   default = "public"
 }
 
-variable "app_image" {
+variable "web_image" {
   type    = string
-  default = "cycloid/spring-framework-petclinic:latest"
+  default = "talset/spring-framework-petclinic"
+}
+
+variable "web_image_digest" {
+  type = string
+  #default = "latest"
 }
