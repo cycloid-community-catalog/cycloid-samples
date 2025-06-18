@@ -33,7 +33,7 @@ variable "web_image" {
   default = "talset/spring-framework-petclinic"
 }
 
-variable "web_image_digest" {
+variable "web_image_version" {
   type = string
   #default = "latest"
 }
