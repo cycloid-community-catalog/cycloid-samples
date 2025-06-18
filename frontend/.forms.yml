@@ -8,7 +8,7 @@ use_cases:
           - name: Infrastructure
             technologies: [pipeline]
             vars:
-              - name: "Application Load balancer"
+              - name: "Application"
                 description: "Application Load balancer on top of AWS ECS cluster"
                 key: ecs_inventory
                 type: "string"
