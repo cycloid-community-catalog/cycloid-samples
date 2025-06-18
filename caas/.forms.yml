@@ -29,15 +29,15 @@ use_cases:
               - name: "Gitlab Project"
                 description: "Gitlab project associeted to the application"
                 key: demo_gitlab_project
-                widget: text_area
-                type: simple_text
+                widget: simple_text
+                type: string
                 default: ($ .project $)
 
               - name: "Application Version"
                 description: "Version of your application to deploy"
                 key: web_image_version
-                widget: text_area
-                type: simple_text
+                widget: simple_text
+                type: string
                 default: "latest"
 
   - name: azure
@@ -67,14 +67,14 @@ use_cases:
               - name: "Gitlab Project"
                 description: "Gitlab project associeted to the application"
                 key: demo_gitlab_project
-                widget: text_area
-                type: simple_text
+                widget: simple_text
+                type: string
                 default: ($ .project $)
 
               - name: "Application Version"
                 description: "Version of your application to deploy"
                 key: web_image_version
-                widget: text_area
-                type: simple_text
+                widget: simple_text
+                type: string
                 default: "latest"
 
