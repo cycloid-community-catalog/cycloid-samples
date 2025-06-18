@@ -59,6 +59,7 @@ resources:
       aws_cred: ((aws-production))
       ecs_inventory: ((ecs_inventory))
       ($- else if eq .use_case "azure" $)
+      azure_env: "public"
       azure_cred: ((azure-production))
       ($- end $)
 

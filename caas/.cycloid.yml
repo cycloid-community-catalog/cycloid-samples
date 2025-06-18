@@ -1,15 +1,17 @@
 version: "4"
-name: Spring
-canonical: spring
+name: Caas
+canonical: caas
 author: "cycloid-gael"
 # Fill in the stack details.
-description: "Deploy a container application"
-image: https://static.cycloid.io/spring.svg
+description: "Containers as a Service (CaaS)"
+image: https://static.cycloid.io/docker.svg
 keywords:
   - "terraform"
   - "aws"
   - "digit"
   - "spring"
+  - "caas"
+  - "container"
 technologies:
   - technology: terraform
     version: 1.11.4

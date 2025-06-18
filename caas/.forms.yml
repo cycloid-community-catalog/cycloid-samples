@@ -3,7 +3,7 @@
 use_cases:
   - name: aws
     sections:
-      - name: Cloud provider
+      - name: Configurations
         groups:
           - name: Infrastructure
             technologies: [pipeline]
@@ -23,48 +23,31 @@ use_cases:
                     # attributes: 'arn[rlike]="*:${aws_default_region}:*'
                 required: true
 
-      - name: Container Service
-        groups:
-          - name: Configuration
-            technologies: [terraform]
+          - name: Application
+            technologies: [pipeline]
             vars:
-              - name: "Additional environnement variables"
-                description: "Provide additional environnement variables"
-                key: web_env
-                widget: text_area
-                type: map
-                default:
-                  MY_ENV_VAR: my_value
+              - name: "Gitlab Project"
+                description: "Gitlab project associeted to the application"
+                key: demo_gitlab_project
+                widget: simple_text
+                type: string
+                default: ($ .project $)
+
+              - name: "Application Version"
+                description: "Version of your application to deploy"
+                key: web_image_version
+                widget: simple_text
+                type: string
+                default: "latest"
 
   - name: azure
     sections:
-      - name: Cloud provider
+      - name: Configuration
         groups:
-          - name: Access
-            technologies: [pipeline]
-            vars:
-              - name: "Azure environment"
-                description: "The Cloud Environment which should be used"
-                key: azure_env
-                type: string
-                widget: hidden
-                default: "public"
-              - name: "Azure credential"
-                description: "The azure credential containing subscription_id, tenant_id, client_id, client_secret"
-                key: azure_cred
-                type: string
-                widget: cy_cred
-                widget_config:
-                  display_keys: false
-                  cred_types: [azure]
-                default: "((azure-production))"
-
-      - name: App
-        groups:
-          - name: Configuration
+          - name: Infrastructure
             technologies: [terraform]
             vars:
-              - name: "Database server to use"
+              - name: "Database"
                 key: db_name
                 type: string
                 widget: cy_inventory_resource
@@ -76,4 +59,22 @@ use_cases:
                     provider: azurerm
                     type: azurerm_postgresql_flexible_server
                 required: true
-                default: "db-postgres"
+                default: "postgres-($ .project $)-($ .environment $)"
+
+          - name: Application
+            technologies: [pipeline]
+            vars:
+              - name: "Gitlab Project"
+                description: "Gitlab project associeted to the application"
+                key: demo_gitlab_project
+                widget: simple_text
+                type: string
+                default: ($ .project $)
+
+              - name: "Application Version"
+                description: "Version of your application to deploy"
+                key: web_image_version
+                widget: simple_text
+                type: string
+                default: "latest"
+

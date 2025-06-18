@@ -21,7 +21,7 @@ resource "random_string" "name" {
 
 locals {
   # default_short_uniqname is 22 chars max
-  default_short_uniqname = replace("${substr(var.project, 0, 5)}-${substr(var.env, 0, 5)}-${random_string.name.result}", var.nameregex, "-")
+  default_short_uniqname = replace("${substr(replace(var.project, "-", ""), 0, 5)}-${substr(replace(var.env, "-", ""), 0, 5)}-${random_string.name.result}", var.nameregex, "-")
   default_uniqname       = replace("${local.prefix_name}", var.nameregex, "-")
   # Not 32 because we add suffix on DB name such "_uploader" so we keep 10 less
   uniqname = length(local.default_uniqname) > 25 ? local.default_short_uniqname : local.default_uniqname
