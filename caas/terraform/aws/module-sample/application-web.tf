@@ -30,11 +30,7 @@ variable "deployment_minimum_healthy_percent" {
 variable "web_image" {
   # default = "springcommunity/spring-framework-petclinic:latest"
   # default = "cycloid/spring-framework-petclinic:latest"
-  default = "talset/spring-framework-petclinic"
-}
-
-variable "web_image_version" {
-  default = "latest"
+  default = "talset/spring-framework-petclinic:latest"
 }
 
 variable "web_image_digest" {
@@ -42,7 +38,7 @@ variable "web_image_digest" {
 }
 
 locals {
-  web_image = var.web_image_digest == "" ? "${var.web_image}:${var.web_image_version}" : "${var.web_image}:${var.web_image_version}@${var.web_image_digest}"
+  web_image = var.web_image_digest == "" ? "${var.web_image}" : "${var.web_image}@${var.web_image_digest}"
 
   # Calculate the max to be one container more than desired
   # web_deployment_maximum_percent = (var.deployment_minimum_healthy_percent * (var.web_autoscaling_min + 1)) / var.web_autoscaling_min

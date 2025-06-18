@@ -40,7 +40,7 @@ definitions:
           - name: merged-stack
             path: "merged-stack"
       params:
-        IMAGE_REPO: "cycloid/spring-framework-petclinic"
+        IMAGE_REPO: "talset/spring-framework-petclinic"
         CONFIG_PATH: ($ .config_root $)/terraform
         STACK_PATH: ($ .stack_path $)/terraform/($ .use_case $)
 
