@@ -54,7 +54,7 @@ jobs:
               while [ $COUNT -lt $MAX_RETRIES ]; do
                 echo "Create Projecy: ${TARGET_PROJECT}"
                 PROJECT_CAN=$(echo "$TARGET_PROJECT" | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9_-]/-/g')
-                cy project create --project $PROJECT_CAN --name "${TARGET_PROJECT}" 2>/dev/null
+                cy project create --project $PROJECT_CAN --name "${TARGET_PROJECT}" 2>&1 > /dev/null
 
                 if [ $? -eq 0 ]; then
                   echo "Component created successfully."
@@ -71,7 +71,7 @@ jobs:
                 echo "    - $env"
                 ENV_CAN=$(echo "$env" | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9_-]/-/g')
 
-                cy environment create --project "${PROJECT_CAN}" --env $ENV_CAN --name "$env" 2>/dev/null
+                cy environment create --project "${PROJECT_CAN}" --env $ENV_CAN --name "$env" 2>&1 > /dev/null
               done
               echo "https://${CONSOLE_URL}/organizations/${CY_ORG}/projects/${PROJECT}"
 
