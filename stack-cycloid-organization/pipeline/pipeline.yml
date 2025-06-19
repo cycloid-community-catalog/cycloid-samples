@@ -156,13 +156,8 @@ jobs:
                   COUNT=$((COUNT + 1))
                   sleep 1
                 done
-                echo "  Create Environments:"
-                IFS=$'\n'; for env in $(echo $TARGET_ENVS | jq -r .[]);do
-                  echo "    - $env"
-                  ENV_CAN=$(echo "$env" | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9_-]/-/g')
-
-                  cy environment create --project "${PROJECT_CAN}" --env $ENV_CAN --name "$env" >/dev/null 2>&1
-                done
+                echo "  Create Environment Projects"
+                cy environment create --project "${PROJECT_CAN}" --env "projects" --name "Projects" >/dev/null 2>&1
 
           params:
             CY_API_URL: ($ .api_url $)
@@ -170,7 +165,6 @@ jobs:
             CY_ORG: ((is_name))
             CY_VERSION: latest
             TARGET_PROJECT: "Project Management"
-            TARGET_ENVS: ["Projects"]
 
   - name: destroy
     max_in_flight: 1
