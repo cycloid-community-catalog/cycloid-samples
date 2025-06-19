@@ -170,7 +170,7 @@ jobs:
             CY_ORG: ((is_name))
             CY_VERSION: latest
             TARGET_PROJECT: "Project Management"
-            TARGET_ENVS: "Projects"
+            TARGET_ENVS: ["Projects"]
 
   - name: destroy
     max_in_flight: 1
