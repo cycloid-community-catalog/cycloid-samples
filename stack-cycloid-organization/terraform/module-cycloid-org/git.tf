@@ -18,6 +18,13 @@ resource "cycloid_catalog_repository" "catalog_repo" {
   organization_canonical = cycloid_organization.org.canonical
 }
 
+resource "cycloid_catalog_repository" "catalog_repo_archi" {
+  name                   = "DIGIT Architecture Repository"
+  branch                 = "stacks-architecture"
+  url                    = "https://github.com/cycloid-community-catalog/cycloid-samples.git"
+  organization_canonical = cycloid_organization.org.canonical
+}
+
 resource "cycloid_config_repository" "config_repo" {
   name                   = "DIGIT Repository"
   branch                 = "config"
