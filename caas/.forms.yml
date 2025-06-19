@@ -78,7 +78,10 @@ use_cases:
               - name: "Application Version"
                 description: "Version of your application to deploy"
                 key: web_image_version
-                widget: simple_text
+                widget: auto_complete
                 type: string
-                default: "latest"
-
+                values:
+                  - "1.0"
+                  - "1.1"
+                  - "latest"
+                default: "1.0"
