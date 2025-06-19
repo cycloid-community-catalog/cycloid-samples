@@ -58,3 +58,9 @@ variable "private_key_openssh" {
   default = ""
   sensitive = true
 }
+
+variable "cycloid_root_org_jwt" {
+  type        = string
+  description = "Root Org JWT used for authentication"
+  sensitive   = true
+}
