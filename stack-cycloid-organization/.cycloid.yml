@@ -27,8 +27,8 @@ config:
         path: pipeline/pipeline.yml
       variables:
         path: pipeline/variables.sample.yml
-        destination: '($ .org $)/($ .project $)/($ .env $)/($ .component $)/pipeline/variables.yml'
+        destination: '($ .config_root $)/pipeline/variables.yml'
     terraform:
       main:
         path: 'terraform/main.tf'
-        destination: '($ .org $)/($ .project $)/($ .env $)/($ .component $)/terraform/main.tf'
+        destination: '($ .config_root $)/terraform/main.tf'
