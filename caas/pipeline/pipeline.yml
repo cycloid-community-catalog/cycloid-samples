@@ -83,7 +83,7 @@ resources:
       azure_cred: ((azure-production))
       ($- end $)
 
-- name: mailjet-send
+- name: email
   type: http-api
   icon: mail
   source:
