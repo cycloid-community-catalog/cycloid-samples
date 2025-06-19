@@ -10,4 +10,5 @@ resource "cycloid_organization" "org" {
 resource "cycloid_organization_member" "tf_org_member" {
   email = "olivier.deturckheim@cycloid.io"
   role_canonical = "organization-admin"
+  organization_canonical = var.cy_org
 }
