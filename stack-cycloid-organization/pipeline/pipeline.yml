@@ -167,7 +167,7 @@ jobs:
           params:
             CY_API_URL: ($ .api_url $)
             CY_API_KEY: ((admin-api-key.password))
-            CY_ORG: ($ .organization $)
+            CY_ORG: ((is_name))
             CY_VERSION: latest
             TARGET_PROJECT: "Project Management"
             TARGET_ENVS: "Projects"
