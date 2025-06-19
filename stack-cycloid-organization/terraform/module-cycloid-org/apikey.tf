@@ -1,11 +1,12 @@
 resource "cycloid_credential" "apikey" {
   count = var.azure_sel ? 1 : 0
 
-  name                   = "admin_api_key"
+  name                   = "admin-api-key"
   description            = "The Cycloid API key."
   organization_canonical = cycloid_organization.org.canonical
-  path                   = "admin_api_key"
-  canonical              = "admin_api_key"
+  path                   = "admin-api-key"
+  canonical              = "admin-api-key"
+  owner                  = "cycloid_olivier"
 
   type = "basic_auth"
   body = {
