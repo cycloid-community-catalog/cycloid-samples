@@ -64,3 +64,7 @@ resource "azurerm_cdn_frontdoor_route" "default" {
   link_to_default_domain        = true
   https_redirect_enabled        = true
 }
+
+output "application_url" {
+  value = azurerm_container_app.app.ingress[0].fqdn
+}

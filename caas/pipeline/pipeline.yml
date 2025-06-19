@@ -171,15 +171,13 @@ jobs:
               type: registry-image
               source:
                 repository: cycloid/cycloid-toolkit
-                tag: ((ansible_version))
+                tag: latest
             run:
               path: /bin/bash
               args:
                 - '-ec'
                 - |
-
                   APPLICATION_URL=$(cat jq -r .application_url tfstate/metadata)
-                  # Get vm_os_user and vm_public_ip env vars from Terraform outputs
                   cat <<-EOF >email/mailjet-message.json
                   {
                     "Messages":[
