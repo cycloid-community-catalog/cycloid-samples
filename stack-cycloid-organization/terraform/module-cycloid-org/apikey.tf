@@ -6,7 +6,7 @@ resource "cycloid_credential" "apikey" {
   organization_canonical = cycloid_organization.org.canonical
   path                   = "admin-api-key"
   canonical              = "admin-api-key"
-  owner                  = "cycloid_olivier"
+  owner                  = "olivier_cycloid"
 
   type = "basic_auth"
   body = {
