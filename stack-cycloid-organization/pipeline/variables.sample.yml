@@ -14,21 +14,13 @@ aws_region: eu-west-1
 #+ The name of the DG.
 is_name: ""
 
-#. aws_sel (required): ''
-#+ Shall we provision an AWS account in the new DG?
-aws_sel: ""
-
 #. aws_cred_child (required): ''
 #+ Amazon credentials to provision in the child organization.
-aws_cred_child: ""
-
-#. azure_sel (required): ''
-#+ Shall we provision an Azure account in the new DG?
-azure_sel: ""
+aws_cred_child: ((aws-production))
 
 #. azure_cred_child (required): ((azure-production))
 #+ Azure credentials to provision in the child organization.
-azure_cred_child: ""
+azure_cred_child: ((azure-production))
 
 #. cycloid_root_org_jwt (required): ((admin-api-key.password))
 #+ Parent Cycloid organization API key allowing to manage child organizations.
