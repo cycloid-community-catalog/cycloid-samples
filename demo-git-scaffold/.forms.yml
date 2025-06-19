@@ -8,7 +8,7 @@ use_cases:
           - name: Scaffolding Template
             technologies: [pipeline]
             vars:
-              - name: "Gitlab Project Name"
+              - name: "Gitlab project name"
                 description: "The Gitlab project name to use"
                 widget: simple_text
                 key: target_project
@@ -33,7 +33,7 @@ use_cases:
                 key: target_envs
                 widget: dropdown
                 required: true
-                type: string
+                type: array
                 values:
                   - Prod-AWS
                   - Prod-Azure
@@ -41,3 +41,5 @@ use_cases:
                   - UAT-Azure
                   - Dev-AWS
                   - Dev-Azure
+                widget_config:
+                  multiselect: true

@@ -56,7 +56,7 @@ jobs:
               MAX_RETRIES=3
               COUNT=0
               while [ $COUNT -lt $MAX_RETRIES ]; do
-                cy project create --project ${TARGET_PROJECT}
+                cy project create --project "${TARGET_PROJECT}"
 
                 if [ $? -eq 0 ]; then
                   echo "Component created successfully."
@@ -78,5 +78,5 @@ jobs:
           CY_API_KEY: ((admin-api-key.password))
           CY_ORG: ($ .organization $)
           CY_VERSION: latest
-          TARGET_PROJECT: project_target
+          TARGET_PROJECT: ((target_project))
           TARGET_ENVS: ((target_envs))
