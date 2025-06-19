@@ -142,23 +142,11 @@ jobs:
             args:
               - "-ec"
               - |
-                MAX_RETRIES=3
-                COUNT=0
-                while [ $COUNT -lt $MAX_RETRIES ]; do
-                  echo "Create Project: ${TARGET_PROJECT}"
-                  PROJECT_CAN=$(echo "$TARGET_PROJECT" | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9_-]/-/g')
-                  cy project create --project $PROJECT_CAN --name "${TARGET_PROJECT}" >/dev/null 2>&1
-
-                  if [ $? -eq 0 ]; then
-                    break
-                  fi
-
-                  COUNT=$((COUNT + 1))
-                  sleep 1
-                done
+                echo "Create Project: ${TARGET_PROJECT}"
+                PROJECT_CAN=$(echo "$TARGET_PROJECT" | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9_-]/-/g')
+                cy project create --project $PROJECT_CAN --name "${TARGET_PROJECT}" --update
                 echo "  Create Environment Projects"
-                cy environment create --project "${PROJECT_CAN}" --env "projects" --name "Projects" >/dev/null 2>&1
-
+                cy environment create --project "${PROJECT_CAN}" --env "projects" --name "Projects" --update
           params:
             CY_API_URL: ($ .api_url $)
             CY_API_KEY: ((admin-api-key.password))
