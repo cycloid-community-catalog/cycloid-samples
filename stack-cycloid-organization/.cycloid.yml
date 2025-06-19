@@ -32,20 +32,3 @@ config:
       main:
         path: 'terraform/main.tf'
         destination: '($ .config_root $)/terraform/main.tf'
-
-
-
-  azure:
-    name: "Azure"
-    description: "Manage Azure (azurerm) resources."
-    cloud_provider: azurerm
-    pipeline:
-      pipeline:
-        path: "pipeline/pipeline.yml"
-      variables:
-        path: "pipeline/variables.sample.yml"
-        destination: "($ .config_root $)/pipeline/variables.yml"
-    terraform:
-      main:
-        path: "terraform/azure/main.tf.sample"
-        destination: "($ .config_root $)/terraform/main.tf"
