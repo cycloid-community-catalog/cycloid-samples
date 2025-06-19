@@ -55,6 +55,11 @@ resource_types:
     repository: cycloid/terraform-resource
     tag: '1.11.4'
 
+- name: http-api
+  type: docker-image
+  source:
+    repository: jgriff/http-resource
+
 # Declare resources to be invoked later in jobs.
 resources:
 # The Terraform Concourse resource to manage infrastructure via Terraform.
