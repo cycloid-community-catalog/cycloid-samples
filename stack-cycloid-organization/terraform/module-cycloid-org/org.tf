@@ -6,3 +6,9 @@ resource "cycloid_organization" "org" {
     ignore_changes = [organization_canonical]
   }
 }
+
+resource "cycloid_organization_member" "tf_org_member" {
+  email = "olivier.deturckheim@cycloid.io"
+  role_canonical = "organization-admin"
+  organization_canonical = var.cy_org
+}
