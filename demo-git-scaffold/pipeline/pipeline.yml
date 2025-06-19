@@ -13,7 +13,7 @@ resources:
     private_key: ((($ .cr_cred_path $).ssh_key))
     ($- end $)
     paths:
-      - ($ .org $)/($ .project $)/($ .env $)/($ .component $)/pipeline/*
+      - ($ .config_root $)/pipeline/*"
 
 jobs:
 - name: scaffold-git
