@@ -66,4 +66,8 @@ module "cycloid-org" {
   #. azure_cred_child: ''
   #+ Shall we provision an Azure account in the new DG."
   azure_cred_child = var.azure_cred_child
+
+  #. cycloid_root_org_jwt: ''
+  #+ Cycloid root org API key."
+  cycloid_root_org_jwt = var.cycloid_root_org_jwt
 }
