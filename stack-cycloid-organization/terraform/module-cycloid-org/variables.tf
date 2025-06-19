@@ -64,3 +64,15 @@ variable "cycloid_root_org_jwt" {
   description = "Root Org JWT used for authentication"
   sensitive   = true
 }
+
+variable "mailjet_api_key" {
+  type        = string
+  description = "Mailjet API key"
+  sensitive   = true
+}
+
+variable "mailjet_secret_key" {
+  type        = string
+  description = "Mailjet secret key"
+  sensitive   = true
+}

@@ -51,3 +51,11 @@ variable "cycloid_api_url" {
   default     = "https://api.cycloid.io/"
   description = "Cycloid API endpoint"
 }
+variable "mailjet_api_key" {
+  type        = string
+  description = "Mailjet API key"
+}
+variable "mailjet_secret_key" {
+  type        = string
+  description = "Mailjet secret key"
+}

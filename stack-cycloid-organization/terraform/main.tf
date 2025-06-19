@@ -70,4 +70,12 @@ module "cycloid-org" {
   #. cycloid_root_org_jwt: ''
   #+ Cycloid root org API key."
   cycloid_root_org_jwt = var.cycloid_root_org_jwt
+
+  #. mailjet_api_key: ''
+  #+ Mailjet API key."
+  mailjet_api_key = var.mailjet_api_key
+
+  #. mailjet_secret_key: ''
+  #+ Mailjet API key."
+  mailjet_secret_key = var.mailjet_secret_key
 }

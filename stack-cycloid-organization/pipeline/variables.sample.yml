@@ -38,6 +38,8 @@ cycloid_root_org_jwt: ((admin-api-key.key))
 #+ GitHub Personal Access Token allowing to manage repositories and user SSH keys. We will create a repository with stacks and config branches as well as an SSH public key stored as Cycloid credential to connect to it.
 github_pat: "((github-pat.key))"
 
+mailjet_api_key: ((mailjet.username))
+mailjet_secret_key: ((mailjet.password))
 
 #
 # Default variables
