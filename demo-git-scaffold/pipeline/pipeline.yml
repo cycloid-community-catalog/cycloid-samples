@@ -74,6 +74,7 @@ jobs:
 
         params:
           CONSOLE_URL: ($ .console_url $)
+          CY_API_URL: ($ .api_url $)
           CY_API_KEY: ((admin-api-key.password))
           CY_ORG: ($ .organization $)
           CY_VERSION: latest
