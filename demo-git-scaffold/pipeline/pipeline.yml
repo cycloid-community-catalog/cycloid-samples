@@ -57,13 +57,10 @@ jobs:
                 cy project create --project $PROJECT_CAN --name "${TARGET_PROJECT}" >/dev/null 2>&1
 
                 if [ $? -eq 0 ]; then
-                  echo "Component created successfully."
                   break
                 fi
 
                 COUNT=$((COUNT + 1))
-                echo "Attempt $COUNT failed... retrying"
-
                 sleep 1
               done
               echo "  Create Environments:"
