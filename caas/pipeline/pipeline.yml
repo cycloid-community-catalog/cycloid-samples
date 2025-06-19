@@ -83,6 +83,19 @@ resources:
       azure_cred: ((azure-production))
       ($- end $)
 
+- name: mailjet-send
+  type: http-api
+  icon: mail
+  source:
+    url: https://api.mailjet.com/v3.1/send
+    method: POST
+    username: ((mailjet.username))
+    password: ((mailjet.password))
+    out_only: true
+    headers:
+      Accept: '*/*'
+      Content-Type: 'application/json'
+
 # The Terraform stack (will be merged with the config).
 - name: git_stack
   type: git
@@ -150,6 +163,55 @@ jobs:
         - put: tfstate
           params:
             terraform_source: merged-stack/
+
+        - task: notification
+          config:
+            platform: linux
+            image_resource:
+              type: registry-image
+              source:
+                repository: cycloid/cycloid-toolkit
+                tag: ((ansible_version))
+            run:
+              path: /bin/bash
+              args:
+                - '-ec'
+                - |
+
+                  APPLICATION_URL=$(cat jq -r .application_url tfstate/metadata)
+                  # Get vm_os_user and vm_public_ip env vars from Terraform outputs
+                  cat <<-EOF >email/mailjet-message.json
+                  {
+                    "Messages":[
+                      {
+                        "From": {
+                          "Email": "$EMAIL_FROM",
+                          "Name": "Cycloid Platform"
+                        },
+                        "To": [
+                          {
+                            "Email": "($ .project_owner_email $)",
+                            "Name": "($ .project_owner_name $) ($ .project_owner_surname $)"
+                          }
+                        ],
+                        "Subject": "Your application is available!",
+                        "TextPart": "Dear ($ .project_owner_name $), Your application is available. You can access it at the following URL: https://${APPLICATION_URL} Best regards, Cycloid Platform",
+                        "HTMLPart": "<p>Dear ($ .project_owner_name $),<br/><br/>Your application is available.<br/>You can access it at the following URL: https://${APPLICATION_URL}<br/><br/>Best regards,<br/>Cycloid Platform</p>"
+                      }
+                    ]
+                  }
+                  EOF
+            inputs:
+            - name: tfstate
+            outputs:
+            - name: email
+          params:
+            EMAIL_FROM: "olivier.deturckheim@cycloid.io"
+
+        - put: email
+          params:
+            file: email/mailjet-message.json
+
 
   - name: destroy
     serial: true
