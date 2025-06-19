@@ -1,26 +1,43 @@
 ---
 version: "2"
 use_cases:
-- name: default
-  sections:
-  - name: config
-    groups:
-    - name: Scaffolding Template
-      technologies: [pipeline]
-      vars:
-      - name: "Development Stack"
-        description: "Select a scaffolding template according to your desired development stack."
-        key: scaffolding_template
-        widget: dropdown
-        required: true
-        type: map
-        values:
-        - {label: "REST API using Express and Prisma Client", value: "express"}
-        - {label: "REST API using Fastify and Prisma Client", value: "fastify"}
-        - {label: "REST API using hapi and Prisma Client", value: "hapi"}
-        - {label: "REST API using Koa and Prisma Client", value: "koa"}
-        - {label: "REST API using NestJS and Prisma Client", value: "nest"}
-        - {label: "Web app using Next.js and Prisma Client", value: "nextjs"}
-        - {label: "Fullstack app with Nuxt using Vue and Prisma Client", value: "nuxt"}
-        - {label: "Web app using React Router 7 and Prisma ORM", value: "react-router-7"}
-        default: "REST API using Express and Prisma Client"
+  - name: default
+    sections:
+      - name: config
+        groups:
+          - name: Scaffolding Template
+            technologies: [pipeline]
+            vars:
+              - name: "Gitlab Project Name"
+                description: "The Gitlab project name to use"
+                widget: simple_text
+                key: target_project
+                type: "string"
+
+              - name: "Project Type"
+                description: "Specifies the technology stack used in the project"
+                key: scaffolding_template
+                widget: dropdown
+                required: true
+                type: string
+                values:
+                  - Angular
+                  - Java
+                  - NodeJS
+                  - Python
+                  - React
+                # default: "Java"
+
+              - name: "Environements"
+                description: "Specifies the environements to provision in the project"
+                key: target_envs
+                widget: dropdown
+                required: true
+                type: string
+                values:
+                  - Prod-AWS
+                  - Prod-Azure
+                  - UAT-AWS
+                  - UAT-Azure
+                  - Dev-AWS
+                  - Dev-Azure

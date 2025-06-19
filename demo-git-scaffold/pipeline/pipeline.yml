@@ -33,4 +33,50 @@ jobs:
             args:
             - -ec
             - |
-              echo scaffold git
+              echo "scaffold git"
+
+
+    - task: create-project-env
+      config:
+        platform: linux
+        image_resource:
+          type: registry-image
+          source:
+            repository: cycloid/cycloid-toolkit
+            tag: latest
+        run:
+          path: bash
+          args:
+            - "-ec"
+            - |
+
+              echo $TARGET_ENVS
+              exit 0
+
+              MAX_RETRIES=3
+              COUNT=0
+              while [ $COUNT -lt $MAX_RETRIES ]; do
+                cy project create --project ${TARGET_PROJECT}
+
+                if [ $? -eq 0 ]; then
+                  echo "Component created successfully."
+                  break
+                fi
+
+                COUNT=$((COUNT + 1))
+                echo "Attempt $COUNT failed... retrying"
+
+                sleep 1
+              done
+
+              cy environment create --env "my-environment"
+
+              echo "https://${CONSOLE_URL}/organizations/${CY_ORG}/projects/${PROJECT}"
+
+        params:
+          CONSOLE_URL: ($ .console_url $)
+          CY_API_KEY: ((admin-api-key.password))
+          CY_ORG: ($ .organization $)
+          CY_VERSION: latest
+          TARGET_PROJECT: project_target
+          TARGET_ENVS: ((target_envs))
