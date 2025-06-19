@@ -66,5 +66,5 @@ resource "azurerm_cdn_frontdoor_route" "default" {
 }
 
 output "application_url" {
-  value = azurerm_container_app.app.ingress[0].fqdn
+  value = azurerm_cdn_frontdoor_endpoint.https.host_name
 }
