@@ -56,10 +56,10 @@ resources:
       organization: ($ .organization $)
       component: ($ .component $)
       ($- if eq .use_case "aws" $)
-      aws_cred: ((aws_cred))
+      aws_cred: ((aws-production))
       aws_region: ((aws_default_region))
       ($- else if eq .use_case "azure" $)
-      azure_cred: ((azure_cred))
+      azure_cred: ((azure-production))
       ($- end $)
 
 # The Terraform stack (will be merged with the config).

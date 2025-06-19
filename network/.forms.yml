@@ -32,15 +32,15 @@ use_cases:
                     "us-west-2",
                   ]
                 default: "eu-west-1"
-              - name: "AWS access key"
-                description: "AWS access key which should be used"
-                key: aws_cred
-                type: string
-                widget: cy_cred
-                widget_config:
-                  display_keys: false
-                  cred_types: [aws]
-                default: "((aws-production))"
+              # - name: "AWS access key"
+              #   description: "AWS access key which should be used"
+              #   key: aws_cred
+              #   type: string
+              #   widget: cy_cred
+              #   widget_config:
+              #     display_keys: false
+              #     cred_types: [aws]
+              #   default: "((aws-production))"
 
   - name: azure
     sections:
@@ -57,16 +57,15 @@ use_cases:
                 values: ["West Europe", "Central Europe"]
                 default: "West Europe"
 
-          - name: Access
-            technologies: [pipeline]
-            vars:
-              - name: "Azure credential"
-                description: "The azure credential containing subscription_id, tenant_id, client_id, client_secret"
-                key: azure_cred
-                type: string
-                widget: cy_cred
-                widget_config:
-                  display_keys: false
-                  cred_types: [azure]
-                default: "((azure-production))"
-
+          # - name: Access
+          #   technologies: [pipeline]
+          #   vars:
+          #     - name: "Azure credential"
+          #       description: "The azure credential containing subscription_id, tenant_id, client_id, client_secret"
+          #       key: azure_cred
+          #       type: string
+          #       widget: cy_cred
+          #       widget_config:
+          #         display_keys: false
+          #         cred_types: [azure]
+          #       default: "((azure-production))"
