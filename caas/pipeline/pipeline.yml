@@ -177,7 +177,7 @@ jobs:
               args:
                 - '-ec'
                 - |
-                  APPLICATION_URL=$(cat jq -r .application_url tfstate/metadata)
+                  APPLICATION_URL=$(jq -r .application_url tfstate/metadata)
                   cat <<-EOF >email/mailjet-message.json
                   {
                     "Messages":[
