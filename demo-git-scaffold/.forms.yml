@@ -28,8 +28,8 @@ use_cases:
                   - React
                 # default: "Java"
 
-              - name: "Environements"
-                description: "Specifies the environements to provision in the project"
+              - name: "Environments"
+                description: "Specifies the environments to provision in the project"
                 key: target_envs
                 widget: dropdown
                 required: true
