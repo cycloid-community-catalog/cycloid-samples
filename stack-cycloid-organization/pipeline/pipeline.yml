@@ -38,6 +38,8 @@ resources:
       cycloid_root_org_jwt: ((cycloid_root_org_jwt))
       cycloid_api_url: ($ .api_url $)
       cycloid_git_ssh_key: ((git-cycloid.ssh_key))
+      mailjet_api_key: ((mailjet_api_key))
+      mailjet_secret_key: ((mailjet_secret_key))
       cy_org: ($ .org $)
       cy_project: ($ .project $)
       cy_env: ($ .env $)
