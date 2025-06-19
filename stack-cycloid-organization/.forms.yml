@@ -15,7 +15,7 @@ use_cases:
         type: string
         validations: 
         - regexp: "^[a-z0-9-]+$" 
-          error_message: "Please enter a valid IS name."
+          error_message: "Please enter a valid IS code (only alphanumeric chars)."
         required: true
 
     - name: Customer Admins
