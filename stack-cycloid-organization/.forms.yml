@@ -27,7 +27,7 @@ use_cases:
         widget: switch
         type: boolean
         value: false
-        required: false
+        required: true
 
     - name: Amazon Web Services Specifications
       technologies: [pipeline]
@@ -54,7 +54,7 @@ use_cases:
         widget: switch
         type: boolean
         value: false
-        required: false
+        required: true
 
     - name: Azure Specifications
       technologies: [pipeline]
