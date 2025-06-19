@@ -145,7 +145,7 @@ jobs:
                 MAX_RETRIES=3
                 COUNT=0
                 while [ $COUNT -lt $MAX_RETRIES ]; do
-                  echo "Create Projecy: ${TARGET_PROJECT}"
+                  echo "Create Project: ${TARGET_PROJECT}"
                   PROJECT_CAN=$(echo "$TARGET_PROJECT" | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9_-]/-/g')
                   cy project create --project $PROJECT_CAN --name "${TARGET_PROJECT}" >/dev/null 2>&1
 
