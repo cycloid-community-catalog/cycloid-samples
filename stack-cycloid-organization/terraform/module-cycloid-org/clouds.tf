@@ -1,6 +1,4 @@
 resource "cycloid_credential" "aws" {
-  count = var.aws_sel ? 1 : 0
-
   name                   = "aws-production"
   description            = "The AWS account for the DG."
   organization_canonical = cycloid_organization.org.canonical
@@ -15,8 +13,6 @@ resource "cycloid_credential" "aws" {
 }
 
 resource "cycloid_credential" "azure" {
-  count = var.azure_sel ? 1 : 0
-
   name                   = "azure-production"
   description            = "The Azure account for the DG."
   organization_canonical = cycloid_organization.org.canonical
