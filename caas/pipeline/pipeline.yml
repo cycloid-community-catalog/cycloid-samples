@@ -163,6 +163,8 @@ jobs:
             - get: git_config
               trigger: true
             - get: image_spring
+              params:
+                skip_download: true
               trigger: true
         - *task-merge-stack-and-config
         - put: tfstate
@@ -229,6 +231,8 @@ jobs:
             - get: git_config
               trigger: false
             - get: image_spring
+              params:
+                skip_download: true
               trigger: false
         - *task-merge-stack-and-config
         - put: tfstate
