@@ -18,7 +18,7 @@ use_cases:
           error_message: "Please enter a valid IS code (only alphanumeric chars)."
         required: true
 
-    - name: Customer Admins
+    - name: DG Admins
       technologies: [pipeline]
       vars:
       - name: "DG Admins"
@@ -38,7 +38,7 @@ use_cases:
         widget_config:
           multiselect: true
 
-    - name: Customer Users
+    - name: DG Users
       technologies: [pipeline]
       vars:
       - name: "DG Users"
