@@ -21,8 +21,8 @@ use_cases:
     - name: Customer Admins
       technologies: [pipeline]
       vars:
-      - name: "Customer Admins"
-        description: "The Customer Admins who should given access to the IS. These users will be assigned the CustomerAdmin RBAC role."
+      - name: "DG Admins"
+        description: "The DG Admins such as head of sector who should given access to the IS. These users will be assigned the CustomerAdmin RBAC role."
         key: customer_admins
         type: array
         values:
@@ -41,8 +41,8 @@ use_cases:
     - name: Customer Users
       technologies: [pipeline]
       vars:
-      - name: "Customer Users"
-        description: "The Customer Users who should given access to the IS. These users will be assigned the CustomerUser RBAC role."
+      - name: "DG Users"
+        description: "The DG Users who should given access to the IS. These users will be assigned the CustomerUser RBAC role."
         key: customer_users
         type: array
         values:
