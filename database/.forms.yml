@@ -14,7 +14,8 @@ use_cases:
                 type: "string"
                 widget: cy_inventory_resource
                 widget_config:
-                  attribute: arn
+                  # attribute: arn
+                  attribute: tags.Name
                   filters:
                     # project: digit-network
                     provider: aws
@@ -23,6 +24,7 @@ use_cases:
                     type: aws_vpc
                     #attributes: "arn[rlike]=*:${aws_default_region}:*"
                     # attributes: 'arn[rlike]="*:${aws_default_region}:*'
+                default: "($ .project $)-($ .environment $)-network"
                 required: true
 
           - name: Database
