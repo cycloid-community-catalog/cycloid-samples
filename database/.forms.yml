@@ -117,6 +117,7 @@ use_cases:
                 type: integer
                 widget: slider_range
                 values: [7, 35]
+                default: 7
 
               - name: "Database user"
                 key: user
