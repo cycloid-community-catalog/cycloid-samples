@@ -60,13 +60,13 @@ variable "postgres_skip_final_snapshot" {
 }
 
 resource "aws_security_group" "postgres" {
-  name        = "${local.prefix_name}-postgres"
+  name        = local.prefix_name
   description = "postgres ${var.env} for ${var.project}"
   # vpc_id      = var.vpc_id
   vpc_id = data.aws_vpc.vpc.id
 
   tags = {
-    Name = local.postgres_identifier
+    Name = local.prefix_name
     role = "postgres"
   }
 }
