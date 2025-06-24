@@ -43,7 +43,10 @@ variable "network_inventory" {
 
 locals {
   # "arn:aws:ec2:eu-west-1:11111111111:vpc/vpc-xxxx"
-  network_parts  = split(":", var.network_inventory)
-  network_region = local.network_parts[3]
-  network_vpc_id = split("/", local.network_parts[5])[1]
+  # network_parts  = split(":", var.network_inventory)
+  # network_region = local.network_parts[3]
+  # network_vpc_id = split("/", local.network_parts[5])[1]
+
+  network_region = "eu-west-1"
+  network_vpc_id = var.network_inventory
 }

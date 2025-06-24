@@ -57,6 +57,7 @@ resources:
       component: ($ .component $)
       ($- if eq .use_case "aws" $)
       aws_cred: ((aws-production))
+      # define here because we need region at the provider definition
       network_inventory: ((network_inventory))
       # aws_region: ((aws_default_region))
       ($- else if eq .use_case "azure" $)

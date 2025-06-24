@@ -5,13 +5,14 @@
 ###
 
 
-data "aws_vpc" "example" {
-  id = var.vpc_id
-}
+# data "aws_vpc" "vpc" {
+#   id = var.vpc_id
+# }
 
 # variable "database_subnet_group_name" {}
 locals {
-  database_subnet_group_name = data.aws_vpc.example.tags["Name"]
+  # database_subnet_group_name = data.aws_vpc.vpc.tags["Name"]
+  database_subnet_group_name = var.vpc_id
   postgres_identifier        = local.uniqname
 }
 
