@@ -1,64 +1,25 @@
 #! /usr/bin/env bash
 set -eu
 
-export CY_ORG=digit
-export CY_PROJECT=playground
-export CY_ENV=azure
-export CY_COMPONENT=management
-export CY_COMPONENT_NAME=Management
-export CY_API_URL=https://api.digit.cycloid.io/
-export USE_CASE="azure"
-CY_API_KEY="$(op read "op://Cycloid/API_saas_eu_digit/identifiant")"
-export CY_API_KEY
-
-CY_STACKFORMS_VAR=$(cat <<EOF |
----
-aws:
-  Configurations:
-    Access:
-      aws_default_region: ((aws_default_region))
-      network_inventory: ((network_inventory))
-    Database:
-      postgres_engine_version: ((postgres_engine_version))
-      postgres_type: ((postgres_type))
-      postgres_backup_retention: ((postgres_backup_retention))
-    Infrastructure:
-      database_inventory: # arn ?
-      demo_gitlab_project: ((demo_gitlab_project))
-      web_image_version: ((web_image_version))
-
-azure:
-  "Cloud provider":
-    Settings:
-      location: "West Europe"
-  Database:
-    Settings:
-      virtual_network_name: "main-network"
-      sku: "bCU1"
-      # backup_retention_days: 7
-      user: petclinic
-      database: petclinic
-      engine_version: "16"
-      resource_group_name: ${CY_PROJECT}-${CY_ENV}-${CY_COMPONENT}
-  Configuration:
-    Infrastructure:
-      db_name: "postgres-${CY_PROJECT}-${CY_ENV}"
-    Application:
-      demo_gitlab_project: ((demo_gitlab_project))
-      web_image_version: ((web_image_version))
-EOF
-yq -r ".${USE_CASE}"
-)$
+export CY_ORG=${CY_ORG:?org is required}
+export CY_PROJECT=${CY_PROJECT:?project is required}
+export CY_ENV=${CY_ENV:?environment is required}
+export CY_COMPONENT=${CY_COMPONENT:?component is required}
+export CY_COMPONENT_NAME=${CY_COMPONENT_NAME:?component name is required}
+export CY_API_URL=${CY_API_URL:?cy api url is required}
+export USE_CASE=${USE_CASE:?use case is required}
+export CY_API_KEY=${CY_API_KEY:?api key is required}
+export CY_STACKFORMS_VARS=${CY_STACKFORMS_VARS:?vars are needed}
 
 echo "Started with the following config:"
-echo "$CY_STACKFORMS_VAR"
+echo "$CY_STACKFORMS_VARS"
 
+echo "fetching required stacks..."
 STACKS="$(cy stack list -o json)"
 stack_network_ref="$(echo "$STACKS" | jq -r '.[] | select(.canonical == "network") | .ref')"
 stack_database_ref="$(echo "$STACKS" | jq -r '.[] | select(.canonical == "database") | .ref')"
 stack_caas_ref="$(echo "$STACKS" | jq -r '.[] | select(.canonical == "caas") | .ref')"
 
-export CY_STACKFORMS_VAR
 wait_for_component() {
   local component=${1:?component as first arg}
 
@@ -104,7 +65,6 @@ wait_for_component() {
   done
 }
 
-# set -x
 network_component="${CY_COMPONENT}-network"
 network_component_name="${CY_COMPONENT_NAME}: Network"
 cy component create --update \
@@ -112,6 +72,7 @@ cy component create --update \
   --name "$network_component_name" \
   --description "The network landing zone for ${CY_COMPONENT_NAME}" \
   --stack-ref "$stack_network_ref" --use-case "$USE_CASE" -o yaml
+
 wait_for_component "$network_component"
 
 database_component="${CY_COMPONENT}-database"
@@ -121,6 +82,7 @@ cy component create --update \
   --name "$database_component_name" \
   --description "The database managed by ${CY_COMPONENT_NAME}" \
   --stack-ref "$stack_database_ref" --use-case "$USE_CASE" -o yaml
+
 wait_for_component "$database_component"
 
 caas_component="${CY_COMPONENT}-caas"
@@ -130,4 +92,5 @@ cy component create --update \
   --name "$caas_component_name" \
   --description "The caas managed by ${CY_COMPONENT_NAME}" \
   --stack-ref "$stack_caas_ref" --use-case "$USE_CASE" -o yaml
+
 wait_for_component "$caas_component"
