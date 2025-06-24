@@ -9,14 +9,15 @@ variable "database_cluster_identifier" {}
 # Get VPC and Network informations
 
 # Get DB from database_cluster_identifier
-data "aws_rds_cluster" "database" {
-  cluster_identifier = var.database_cluster_identifier
-}
+# data "aws_rds_cluster" "database" {
+#   cluster_identifier = var.database_cluster_identifier
+# }
 
 # Get VPC from database security group
 data "aws_security_group" "database" {
   # get the first sg to know which vpc is used
-  id = local.database_security_group_id
+  # id = local.database_security_group_id
+  id = var.database_cluster_identifier
 }
 
 # Get subnets from vpc and roel tag

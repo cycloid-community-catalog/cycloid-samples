@@ -14,14 +14,16 @@ use_cases:
                 type: "string"
                 widget: cy_inventory_resource
                 widget_config:
-                  attribute: arn
+                  attribute: tags.Name
                   filters:
                     provider: aws
                     project: ($ .project $)
                     environment: ($ .environment $)
-                    type: aws_rds_cluster
+                    type: aws_security_group
                     # attributes: 'arn[rlike]="*:${aws_default_region}:*'
+                    attributes: "tags.role[eq]=postgres"
                 required: true
+                default: "($ .project $)-($ .environment $)-relational-database"
 
           - name: Application
             technologies: [pipeline]

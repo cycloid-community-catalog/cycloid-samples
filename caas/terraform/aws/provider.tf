@@ -35,9 +35,12 @@ variable "database_inventory" {
 
 locals {
   # "arn:aws:rds:eu-west-1:111111111111:cluster:digit-dev-xxxx"
-  database_cluster_parts      = split(":", var.database_inventory)
-  database_region             = local.database_cluster_parts[3]
-  database_cluster_identifier = local.database_cluster_parts[6]
+  # database_cluster_parts      = split(":", var.database_inventory)
+  # database_region             = local.database_cluster_parts[3]
+  # database_cluster_identifier = local.database_cluster_parts[6]
+
+  database_region             = "eu-west-1"
+  database_cluster_identifier = var.database_inventory
 }
 
 # variable "aws_region" {
