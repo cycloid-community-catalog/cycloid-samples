@@ -46,12 +46,20 @@ use_cases:
     sections:
       - name: Cloud provider
         groups:
+          - name: Test
+            technologies: [pipeline]
+            vars:
+              - name: "inventory"
+                key: inventory_url
+                type: string
+                widget: hidden
+                default: "($ .api_url $)"
           - name: Settings
             technologies: [terraform]
             vars:
               - name: "Azure Region"
                 description: "Which region should this be deployed."
-                key: module.network.location
+                key: location
                 type: string
                 widget: radios
                 values: ["West Europe", "Central Europe"]

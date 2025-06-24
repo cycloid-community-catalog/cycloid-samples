@@ -98,7 +98,7 @@ use_cases:
                 default: "main-network"
               - name: "Type"
                 description: "The size of the database server."
-                key: module.database.sku
+                key: sku
                 type: map
                 widget: auto_complete
                 values:
