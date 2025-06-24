@@ -43,8 +43,16 @@ resource "azurerm_container_app_environment" "app" {
   }
 }
 
+resource "random_password" "storage_account_name" {
+  length  = 12
+  lower   = true
+  upper   = false
+  special = false
+  numeric = false
+}
+
 resource "azurerm_storage_account" "app" {
-  name                     = "fsappnametamer"
+  name                     = random_password.storage_account_name.result
   tags                     = local.default_tags
   resource_group_name      = data.azurerm_resource_group.current.name
   location                 = data.azurerm_resource_group.current.location
