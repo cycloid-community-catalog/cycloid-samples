@@ -45,10 +45,10 @@ data "aws_subnets" "public" {
 }
 
 locals {
-  database_security_group_id = one(data.aws_rds_cluster.database.vpc_security_group_ids)
-  vpc_id                     = data.aws_security_group.database.vpc_id
-  public_subnets             = data.aws_subnets.public.ids
-  private_subnets            = data.aws_subnets.private.ids
+  # database_security_group_id = one(data.aws_rds_cluster.database.vpc_security_group_ids)
+  vpc_id          = data.aws_security_group.database.vpc_id
+  public_subnets  = data.aws_subnets.public.ids
+  private_subnets = data.aws_subnets.private.ids
 }
 
 #Used to only keep few char for component like ALB name
