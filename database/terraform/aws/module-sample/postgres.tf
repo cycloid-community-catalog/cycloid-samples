@@ -97,7 +97,7 @@ resource "aws_rds_cluster" "app" {
   vpc_security_group_ids = [aws_security_group.postgres.id]
 
   tags = {
-    Name = local.postgres_identifier
+    Name = local.prefix_name
     role = "postgres"
   }
 }
