@@ -94,7 +94,7 @@ jobs:
   plan:
   - do:
     - get: stack
-      trigger: true
+      trigger: false
     - task: destroy
       config:
         platform: linux
