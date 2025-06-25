@@ -4,7 +4,7 @@ canonical: three-tiers
 author: "cycloid-fbh"
 # Fill in the stack details.
 description: "Allow you to deploy Three-Tiers Architecture."
-image: https://static.cycloid.io/3tiers.svg
+image: https://static.cycloid.io/3tiers.png
 keywords:
   - "azure"
   - "aws"
