@@ -190,7 +190,7 @@ jobs:
                   code=404
                   while [[ "$code" != 200 ]]; do
                     code="$(curl -sk "https://${url}" -w "%{http_code}" -o /dev/null)"
-                    echo "Waiting for app url ${url} to come up, status code: ${code}"
+                    echo "Waiting for app url https://${url} to come up, status code: ${code}"
                     sleep 1
                   done
 
