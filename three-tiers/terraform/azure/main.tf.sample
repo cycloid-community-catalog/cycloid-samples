@@ -1,0 +1,9 @@
+module "network" {
+  source = "./network"
+  component          = var.component
+  environment        = var.env
+  project            = var.project
+  organization       = var.organization
+
+  resource_group_name = "${var.organization}-${var.project}-${var.env}"
+}

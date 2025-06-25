@@ -155,7 +155,7 @@ use_cases:
 
           # Database
           - name: Database
-            technologies: [pipeline]
+            technologies: [pipeline, terraform]
             vars:
               - name: "Engine version"
                 description: "Postgres engine version."

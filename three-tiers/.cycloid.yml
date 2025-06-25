@@ -22,6 +22,10 @@ config:
       variables:
         path: "pipeline/variables.yml"
         destination: "($ .config_root $)/pipeline/variables.yml"
+    terraform:
+      main:
+        path: "terraform/aws/main.tf.sample"
+        destination: "($ .config_root $)/terraform/main.tf"
 
   azure:
     name: "Azure"
@@ -32,3 +36,7 @@ config:
       variables:
         path: "pipeline/variables.yml"
         destination: "($ .config_root $)/pipeline/variables.yml"
+    # terraform:
+    #   main:
+    #     path: "terraform/azure/main.tf.sample"
+    #     destination: "($ .config_root $)/terraform/main.tf"
