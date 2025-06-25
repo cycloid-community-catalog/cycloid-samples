@@ -72,7 +72,7 @@ cy component create --update \
   --component "$sla_component"  \
   --name "$sla_component_name" \
   --description "The SLA configuration managed by ${CY_COMPONENT_NAME}" \
-  --stack-ref "$stack_sla_ref" --use-case "$USE_CASE" -o yaml
+  --stack-ref "$stack_sla_ref" --use-case "default" -o yaml
 
 network_component="network"
 network_component_name="Network"
