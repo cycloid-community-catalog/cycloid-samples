@@ -53,7 +53,7 @@ module "vpc" {
 
 #database
 module "database" {
-  source       = "github.com/cycloid-community-catalog/cycloid-samples/caas/terraform/aws/module-sample?ref=stacks"
+  source       = "github.com/cycloid-community-catalog/cycloid-samples/database/terraform/aws/module-sample?ref=stacks"
   component    = var.component
   env          = var.env
   project      = var.project
@@ -62,6 +62,6 @@ module "database" {
   aws_region = local.network_region
   vpc_id     = local.network_vpc_id
 
-  engine_version = var.engine_version
-  postgres_type  = var.postgres_type
+  postgres_engine_version = var.engine_version
+  postgres_type           = var.postgres_type
 }
