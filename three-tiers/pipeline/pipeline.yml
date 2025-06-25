@@ -31,9 +31,15 @@ jobs:
           source:
             repository: cycloid/cycloid-toolkit
             tag: latest
+
         run:
-          dir: stack/($ .stack_path $)/pipeline
-          path: deploy.sh
+          dir: ""
+          path: bash
+          args:
+            - "-ec"
+            - |
+              cd stack/($ .stack_path $)/pipeline
+              bash deploy.sh
         inputs:
         - name: stack
           path: "stack"
