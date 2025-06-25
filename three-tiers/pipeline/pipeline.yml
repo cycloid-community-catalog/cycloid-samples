@@ -66,29 +66,26 @@ jobs:
               Database:
                 postgres_engine_version: ((postgres_engine_version))
                 postgres_type: ((postgres_type))
+              Backup:
                 postgres_backup_retention: ((postgres_backup_retention))
               Infrastructure:
                 database_inventory: "($ .project $)-($ .environment $)-relational-database"
                 network_inventory: "($ .project $)-($ .environment $)-network"
-                demo_gitlab_project: ((demo_gitlab_project))
+              Application:
+                demo_gitlab_project: ($ .project $)
                 web_image_version: ((web_image_version))
           ($- end $)
           ($- if eq .use_case "azure" $)
-            "Cloud provider":
-              Settings:
+            Configurations:
+              Access:
                 location: ((location))
-            Database:
-              Settings:
-                virtual_network_name: "main-network"
-                sku: ((db_sku))
-                backup_retention_days: ((backup_retention_days))
-                user: petclinic
-                database: petclinic
-                engine_version: ((engine_version))
-                resource_group_name: ($ .organization $)-($ .project $)-($ .environment $)
-            Configuration:
               Infrastructure:
-                db_name: "postgres-${CY_PROJECT}-${CY_ENV}"
+                virtual_network_name: "main-network"
+              Database:
+                sku: ((db_sku))
+                engine_version: ((engine_version))
+              Backup:
+                backup_retention_days: ((backup_retention_days))
               Application:
                 demo_gitlab_project: ($ .project $)
                 web_image_version: ((web_image_version))

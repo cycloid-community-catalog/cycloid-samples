@@ -1,6 +1,46 @@
+- &sla
+  name: SLA
+  groups:
+  - name: Service configuration
+    groups:
+      - name: Support
+        technologies: [pipeline]
+        vars:
+          - name: "Select the support level"
+            description: "Support level"
+            key: digit_support_level
+            type: string
+            widget: dropdown
+            values:
+              - 24/7
+              - 12/5
+            default: "12/5"
+
+          - name: "Select the uptime"
+            description: "My IS must be <uptime> available"
+            key: digit_uptime
+            type: string
+            widget: dropdown
+            values:
+              - "99.95"
+              - "99.9"
+            default: "99.95"
+
+          - name: "Select recover time in hours"
+            description: "Select the RTO at the IS level that will trigger the disaster recovery strategy"
+            key: digit_recover_time
+            type: string
+            widget: dropdown
+            values:
+              - "48 hours (backup/restore)"
+              - "8 hours (pilot light)"
+            default: "48 hours (backup/restore)"
+
+
 use_cases:
   - name: aws
     sections:
+      - "<<": *sla
       - name: Example section
         groups:
           - name: Example group
@@ -13,8 +53,101 @@ use_cases:
                 widget: simple_text
                 default: "hello world"
 
+      - name: Network Configurations
+        groups:
+          - name: Access
+            technologies: [pipeline]
+            vars:
+              - name: "Aws region"
+                key: aws_default_region
+                type: string
+                widget: auto_complete
+                values:
+                  [
+                    "eu-north-1",
+                    "ap-south-1",
+                    "eu-west-3",
+                    "eu-west-2",
+                    "eu-west-1",
+                    "ap-northeast-2",
+                    "ap-northeast-1",
+                    "sa-east-1",
+                    "ca-central-1",
+                    "ap-southeast-1",
+                    "ap-southeast-2",
+                    "eu-central-1",
+                    "us-east-1",
+                    "us-east-2",
+                    "us-west-1",
+                    "us-west-2",
+                  ]
+                default: "eu-west-1"
+
+      - name: Database Configurations
+        groups:
+          - name: Database
+            technologies: [pipeline]
+            vars:
+              - name: "Engine version"
+                description: "Postgres engine version."
+                key: postgres_engine_version
+                widget: auto_complete
+                type: string
+                default: "16"
+                values: ["11", "12", "13", "14", "15", "16"]
+
+              - name: "Type"
+                description: "Type of AWS RDS database."
+                key: postgres_type
+                widget: auto_complete
+                type: map
+                values:
+                  - { label: bCU1, value: "db.t3.medium" }
+                  - { label: bCU2, value: "db.t3.large" }
+                  - { label: bCU3, value: "db.t3.xlarge" }
+                  - { label: bCU4, value: "db.t3.2xlarge" }
+                  - { label: CU1, value: "db.t4.medium" }
+                  - { label: CU2, value: "db.t4.large" }
+                  - { label: CU3, value: "db.t4.xlarge" }
+                  - { label: CU4, value: "db.t4.2xlarge" }
+                default: bCU1
+
+          - name: Backup
+            technologies: [pipeline]
+            vars:
+              - name: "Retention"
+                description: "Snapshot retention in days"
+                key: postgres_backup_retention
+                widget: number
+                type: integer
+                default: 7
+
+
+      - name: Application Configurations
+        groups:
+          - name: Application
+            technologies: [pipeline]
+            vars:
+              - name: "Gitlab Project"
+                description: "Gitlab project associeted to the application"
+                key: demo_gitlab_project
+                widget: simple_text
+                type: string
+                default: ($ .project $)
+              - name: "Application Version"
+                description: "Version of your application to deploy"
+                key: web_image_version
+                widget: auto_complete
+                type: string
+                values:
+                  - "1.0"
+                  - "1.1"
+                  - "latest"
+                default: "1.0"
+
   - name: azure
     sections:
+      - "<<": *sla
       - name: Example section
         groups:
           - name: Example group
@@ -26,3 +159,81 @@ use_cases:
                 type: string
                 widget: simple_text
                 default: "hello world"
+
+      - name: azure
+        sections:
+          - name: Network Configurations
+            groups:
+              - name: Settings
+                technologies: [pipeline]
+                vars:
+                  - name: "Azure Region"
+                    description: "Which region should this be deployed."
+                    key: location
+                    type: string
+                    widget: radios
+                    values: ["West Europe", "Central Europe"]
+                    default: "West Europe"
+
+      - name: Database Configurations
+        groups:
+          - name: Database
+            technologies: [pipeline]
+            vars:
+              - name: "Engine version"
+                description: "Postgres engine version."
+                key: engine_version
+                widget: auto_complete
+                type: string
+                default: "16"
+                values: ["11", "12", "13", "14", "15", "16"]
+
+              - name: "Type"
+                description: "The size of the database server."
+                key: sku
+                type: map
+                widget: auto_complete
+                values:
+                  - { label: "bCU1", value: "B_Standard_B1ms" }
+                  - { label: "bCU2", value: "B_Standard_B2s" }
+                  - { label: "bCU3", value: "B_Standard_B4ms" }
+                  - { label: "bCU4", value: "B_Standard_B4ms" }
+                  - { label: "CU1", value: "B_Standard_B1ms" }
+                  - { label: "CU2", value: "B_Standard_B2s" }
+                  - { label: "CU3", value: "B_Standard_B4ms" }
+                  - { label: "CU4", value: "B_Standard_B4ms" }
+                default: "bCU1"
+
+          - name: Backup
+            technologies: [terraform]
+            vars:
+              - name: "Backup retention"
+                unit: days
+                key: backup_retention_days
+                type: integer
+                widget: slider_range
+                values: [7, 35]
+                default: 7
+
+      - name: Application Configurations
+        groups:
+          - name: Application
+            technologies: [pipeline]
+            vars:
+              - name: "Gitlab Project"
+                description: "Gitlab project associeted to the application"
+                key: demo_gitlab_project
+                widget: simple_text
+                type: string
+                default: ($ .project $)
+
+              - name: "Application Version"
+                description: "Version of your application to deploy"
+                key: web_image_version
+                widget: auto_complete
+                type: string
+                values:
+                  - "1.0"
+                  - "1.1"
+                  - "latest"
+                default: "1.0"
