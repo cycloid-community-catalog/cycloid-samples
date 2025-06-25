@@ -80,7 +80,7 @@ jobs:
               Infrastructure:
                 virtual_network_name: "main-network"
               Database:
-                sku: ((db_sku))
+                sku: ((sku))
                 engine_version: ((engine_version))
               Backup:
                 backup_retention_days: ((backup_retention_days))
