@@ -52,7 +52,7 @@ jobs:
           CY_COMPONENT: ($ .component $)
           CY_COMPONENT_NAME: ($ .component_name $)
           CY_API_URL: ($ .api_url $)
-          CY_API_KEY: "TODO"
+          CY_API_KEY: ((admin-api-key))
           CY_STACKFORMS_VARS:
             "Service configuration":
               Support:
@@ -118,7 +118,7 @@ jobs:
           CY_COMPONENT: ($ .component $)
           CY_COMPONENT_NAME: ($ .component_name $)
           CY_API_URL: ($ .api_url $)
-          CY_API_KEY: "TODO"
+          CY_API_KEY: ((admin-api-key))
 
 groups:
 - name: overview

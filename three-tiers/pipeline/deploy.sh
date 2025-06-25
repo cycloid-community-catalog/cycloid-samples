@@ -26,7 +26,7 @@ wait_for_component() {
 
   echo "Starting build for ${component}"
   build_json="$(curl -s -X POST \
-    "${CY_API_URL}/organizations/${CY_ORG}/projects/${CY_PROJECT}/environments/${CY_ENV}/components/${CY_COMPONENT}/pipelines/${CY_PROJECT}-${CY_ENV}-${component}/jobs/deploy/builds" \
+    "${CY_API_URL}/organizations/${CY_ORG}/projects/${CY_PROJECT}/environments/${CY_ENV}/components/${component}/pipelines/${CY_PROJECT}-${CY_ENV}-${component}/jobs/deploy/builds" \
     -H 'Accept: application/json' \
     -H "authorization: Bearer ${CY_API_KEY}" \
     -H 'content-type: application/vnd.cycloid.io.v1+json'
@@ -66,26 +66,26 @@ wait_for_component() {
   done
 }
 
-sla_component="${CY_COMPONENT}-sla"
-sla_component_name="${CY_COMPONENT_NAME}: SLA"
+sla_component="sla"
+sla_component_name="SLA"
 cy component create --update \
   --component "$sla_component"  \
   --name "$sla_component_name" \
-  --description "The network landing zone for ${CY_COMPONENT_NAME}" \
+  --description "The SLA configuration managed by ${CY_COMPONENT_NAME}" \
   --stack-ref "$stack_sla_ref" --use-case "$USE_CASE" -o yaml
 
-network_component="${CY_COMPONENT}-network"
-network_component_name="${CY_COMPONENT_NAME}: Network"
+network_component="network"
+network_component_name="Network"
 cy component create --update \
   --component "$network_component"  \
   --name "$network_component_name" \
-  --description "The network landing zone for ${CY_COMPONENT_NAME}" \
+  --description "The network landing managed by ${CY_COMPONENT_NAME}" \
   --stack-ref "$stack_network_ref" --use-case "$USE_CASE" -o yaml
 
 wait_for_component "$network_component"
 
-database_component="${CY_COMPONENT}-database"
-database_component_name="${CY_COMPONENT_NAME}: Postgres"
+database_component="database"
+database_component_name="Postgres"
 cy component create --update \
   --component "$database_component"  \
   --name "$database_component_name" \
@@ -94,8 +94,8 @@ cy component create --update \
 
 wait_for_component "$database_component"
 
-caas_component="${CY_COMPONENT}-caas"
-caas_component_name="${CY_COMPONENT_NAME}: CAAS"
+caas_component="caas"
+caas_component_name="CAAS"
 cy component create --update \
   --component "$caas_component"  \
   --name "$caas_component_name" \
