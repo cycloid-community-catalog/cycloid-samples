@@ -58,18 +58,25 @@ destroy_component() {
   cy component delete --component "${component}"
 }
 
-# Reverse the order of the components
 caas_component="caas"
 caas_component_name="CAAS"
-destroy_component "$caas_component" "$caas_component_name"
+if cy components get -c "$caas_component" >/dev/null; then
+  destroy_component "$caas_component" "$caas_component_name"
+fi
 
 database_component="database"
 database_component_name="Database"
-destroy_component "$database_component" "$database_component_name"
+if cy components get -c "$database_component" >/dev/null; then
+  destroy_component "$database_component" "$database_component_name"
+fi
 
 network_component="network"
 network_component_name="Network"
-destroy_component "$network_component" "$network_component_name"
+if cy components get -c "$network_component" >/dev/null; then
+  destroy_component "$network_component" "$network_component_name"
+fi
 
 sla_component="sla"
-cy component delete --component "${sla_component}"
+if cy components get -c "$sla_component" >/dev/null; then
+  cy component delete --component "${sla_component}"
+fi
