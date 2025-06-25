@@ -63,7 +63,7 @@ wait_for_component() {
         exit 1
         ;;
       *)
-        echo "waiting for ${component} to deploy since: ${count} seconds."
+        echo "waiting for ${component} to deploy since: ${count} retry."
         continue ;;
     esac
   done

@@ -49,7 +49,7 @@ destroy_component() {
         exit 1
         ;;
       *)
-        echo "waiting for ${component} to destroy since: ${count} seconds."
+        echo "waiting for ${component} to destroy since: ${count} retry."
         continue ;;
     esac
   done
