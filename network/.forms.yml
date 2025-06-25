@@ -44,17 +44,9 @@ use_cases:
 
   - name: azure
     sections:
-      - name: Cloud provider
+      - name: Configurations
         groups:
-          - name: Test
-            technologies: [pipeline]
-            vars:
-              - name: "inventory"
-                key: inventory_url
-                type: string
-                widget: hidden
-                default: "($ .api_url $)"
-          - name: Settings
+          - name: Access
             technologies: [terraform]
             vars:
               - name: "Azure Region"

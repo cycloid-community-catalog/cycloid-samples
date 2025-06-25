@@ -48,12 +48,13 @@ use_cases:
 
   - name: azure
     sections:
-      - name: Configuration
+      - name: Configurations
         groups:
           - name: Infrastructure
             technologies: [terraform]
             vars:
               - name: "Database"
+                description: "The database to use"
                 key: db_name
                 type: string
                 widget: cy_inventory_resource

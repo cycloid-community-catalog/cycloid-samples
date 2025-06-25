@@ -78,9 +78,9 @@ use_cases:
 
   - name: azure
     sections:
-      - name: Database
+      - name: Configurations
         groups:
-          - name: Settings
+          - name: Infrastructure
             technologies: [terraform]
             vars:
               - name: "Virtual network"
@@ -96,6 +96,17 @@ use_cases:
                     type: azurerm_virtual_network
                 required: true
                 default: "main-network"
+          - name: Database
+            technologies: [terraform]
+            vars:
+              - name: "Engine version"
+                description: "Postgres engine version."
+                key: engine_version
+                widget: auto_complete
+                type: string
+                default: "16"
+                values: ["11", "12", "13", "14", "15", "16"]
+
               - name: "Type"
                 description: "The size of the database server."
                 key: sku
@@ -111,6 +122,10 @@ use_cases:
                   - { label: "CU3", value: "B_Standard_B4ms" }
                   - { label: "CU4", value: "B_Standard_B4ms" }
                 default: "bCU1"
+
+          - name: Backup
+            technologies: [terraform]
+            vars:
               - name: "Backup retention"
                 unit: days
                 key: backup_retention_days
@@ -118,24 +133,3 @@ use_cases:
                 widget: slider_range
                 values: [7, 35]
                 default: 7
-
-              - name: "Database user"
-                key: user
-                widget: hidden
-                type: string
-                default: petclinic
-              - name: "Database name"
-                key: database
-                widget: hidden
-                type: string
-                default: petclinic
-              - name: "Database version"
-                key: engine_version
-                widget: hidden
-                type: string
-                default: "16"
-              - name: "Resource group name"
-                key: resource_group_name
-                widget: hidden
-                type: string
-                default: "($ .organization $)-($ .project $)-($ .environment $)"
