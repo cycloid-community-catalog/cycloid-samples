@@ -1,41 +1,41 @@
-- &sla
-  name: SLA
-  groups:
-  - name: Service configuration
+shared:
+  - &sla
+    name: SLA
     groups:
-      - name: Support
-        technologies: [pipeline]
-        vars:
-          - name: "Select the support level"
-            description: "Support level"
-            key: digit_support_level
-            type: string
-            widget: dropdown
-            values:
-              - 24/7
-              - 12/5
-            default: "12/5"
+      - name: Service configuration
+        groups:
+          - name: Support
+            technologies: [pipeline]
+            vars:
+              - name: "Select the support level"
+                description: "Support level"
+                key: digit_support_level
+                type: string
+                widget: dropdown
+                values:
+                  - 24/7
+                  - 12/5
+                default: "12/5"
 
-          - name: "Select the uptime"
-            description: "My IS must be <uptime> available"
-            key: digit_uptime
-            type: string
-            widget: dropdown
-            values:
-              - "99.95"
-              - "99.9"
-            default: "99.95"
+              - name: "Select the uptime"
+                description: "My IS must be <uptime> available"
+                key: digit_uptime
+                type: string
+                widget: dropdown
+                values:
+                  - "99.95"
+                  - "99.9"
+                default: "99.95"
 
-          - name: "Select recover time in hours"
-            description: "Select the RTO at the IS level that will trigger the disaster recovery strategy"
-            key: digit_recover_time
-            type: string
-            widget: dropdown
-            values:
-              - "48 hours (backup/restore)"
-              - "8 hours (pilot light)"
-            default: "48 hours (backup/restore)"
-
+              - name: "Select recover time in hours"
+                description: "Select the RTO at the IS level that will trigger the disaster recovery strategy"
+                key: digit_recover_time
+                type: string
+                widget: dropdown
+                values:
+                  - "48 hours (backup/restore)"
+                  - "8 hours (pilot light)"
+                default: "48 hours (backup/restore)"
 
 use_cases:
   - name: aws
@@ -121,7 +121,6 @@ use_cases:
                 widget: number
                 type: integer
                 default: 7
-
 
       - name: Application Configurations
         groups:
