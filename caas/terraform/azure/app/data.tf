@@ -8,8 +8,12 @@ data "azurerm_virtual_network" "main" {
 }
 
 data "azurerm_postgresql_flexible_server" "db" {
-  name                = var.db_name
+  name                = local.db_name
   resource_group_name = local.resource_group_name
+}
+
+locals {
+  db_name = var.db_name != "" ? var.db_name : "postgres-${var.project}-${var.environment}"
 }
 
 data "azurerm_resource_group" "current" {

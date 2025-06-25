@@ -8,4 +8,5 @@ module "app" {
   project            = var.project
   organization       = var.organization
   app_image          = "${var.web_image}:${local.image_tag}"
+  db_name            = "postgres-${var.project}-${var.env}"
 }
