@@ -173,7 +173,7 @@ use_cases:
                 default: "bCU1"
 
           - name: Backup
-            technologies: [terraform]
+            technologies: [pipeline]
             vars:
               - name: "Backup retention"
                 unit: days
