@@ -1,0 +1,15 @@
+set export := true
+
+CY_ORG := "digit"
+CY_PROJECT := "playground"
+CY_ENV := "azure"
+CY_COMPONENT := "management"
+CY_COMPONENT_NAME := "Management"
+CY_API_URL := "https://api.digit.cycloid.io"
+CY_API_KEY := `op read "op://Cycloid/API_saas_eu_digit/identifiant"`
+
+deploy:
+    ./deploy.sh
+
+destroy:
+    ./destroy.sh

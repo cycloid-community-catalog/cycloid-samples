@@ -1,10 +1,10 @@
 version: "4"
 name: Three-Tiers Architecture
 canonical: three-tiers
-author: "florian"
+author: "cycloid-fbh"
 # Fill in the stack details.
 description: "Allow you to deploy Three-Tiers Architecture."
-image: https://static.cycloid.io/unity.svg
+image: https://static.cycloid.io/sourcetree.svg
 keywords:
   - "azure"
   - "aws"
@@ -16,19 +16,13 @@ config:
   aws:
     name: "AWS"
     cloud_provider: aws
-    pipeline:
+    pipeline: &pp
       pipeline:
-        path: "pipeline/pipeline.yml"
+        path: pipeline/pipeline.yml
       variables:
-        path: "pipeline/variables.sample.yml"
+        path: "pipeline/variables.yml"
         destination: "($ .config_root $)/pipeline/variables.yml"
-
   azure:
     name: "Azure"
     cloud_provider: azurerm
-    pipeline:
-      pipeline:
-        path: "pipeline/pipeline.yml"
-      variables:
-        path: "pipeline/variables.sample.yml"
-        destination: "($ .config_root $)/pipeline/variables.yml"
+    pipeline: *pp
