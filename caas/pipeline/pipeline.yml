@@ -171,6 +171,48 @@ jobs:
           params:
             terraform_source: merged-stack/
 
+        - task: notification-fred
+          config:
+            platform: linux
+            image_resource:
+              type: registry-image
+              source:
+                repository: cycloid/cycloid-toolkit
+                tag: latest
+            run:
+              path: /bin/bash
+              args:
+                - '-ec'
+                - |
+                  APPLICATION_URL=$(jq -r .application_url tfstate/metadata)
+                  cat <<-EOF >email/mailjet-message.json
+                  {
+                    "Messages":[
+                      {
+                        "From": {
+                          "Email": "$EMAIL_FROM",
+                          "Name": "Cycloid Platform"
+                        },
+                        "To": [
+                          {
+                            "Email": "frederic.hampel@cycloid.io",
+                            "Name": "Frédéric BARRAS HAMPEL"
+                          }
+                        ],
+                        "Subject": "Please enable private link",
+                        "TextPart": "Vitre fréro enable le private link dans azure.",
+                        "HTMLPart": "<p>Dear ($ .project_owner_name $),<br/><br/>Your application is available.<br/>You can access it at the following URL: https://${APPLICATION_URL}<br/><br/>Best regards,<br/>Cycloid Platform</p>"
+                      }
+                    ]
+                  }
+                  EOF
+            inputs:
+            - name: tfstate
+            outputs:
+            - name: email
+          params:
+            EMAIL_FROM: "olivier.deturckheim@cycloid.io"
+
         - task: wait-online
           config:
             platform: linux
