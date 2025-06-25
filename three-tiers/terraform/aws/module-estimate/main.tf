@@ -65,3 +65,18 @@ module "database" {
   postgres_engine_version = var.engine_version
   postgres_type           = var.postgres_type
 }
+
+module "caas" {
+  source       = "github.com/cycloid-community-catalog/cycloid-samples/caas/terraform/aws/module-sample"
+  component    = var.component
+  env          = var.env
+  project      = var.project
+  organization = var.organization
+
+  aws_region = var.aws_region
+
+  database_cluster_identifier = "local.database_cluster_identifier"
+  web_image                   = "var.web_image"
+  web_image_version           = "var.web_image_version"
+  web_image_digest            = "var.web_image_digest"
+}
