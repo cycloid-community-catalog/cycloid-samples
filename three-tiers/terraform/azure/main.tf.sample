@@ -1,9 +1,5 @@
-module "network" {
-  source = "./network"
-  component          = var.component
-  environment        = var.env
-  project            = var.project
-  organization       = var.organization
+module "module-estimate" {
+  source = "./module-estimate"
 
-  resource_group_name = "${var.organization}-${var.project}-${var.env}"
+  aws_region = var.aws_region
 }
