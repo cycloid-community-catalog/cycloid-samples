@@ -21,8 +21,8 @@ destroy_component() {
     -H 'content-type: application/vnd.cycloid.io.v1+json'
   )"
 
-  # build_id="$(echo "$build_json" | jq -r '.data.id')"
-  sleep 5
+  build_id="$(echo "$build_json" | jq -r '.data.id')"
+  sleep 3
 
   count=0
   while true; do
@@ -38,7 +38,7 @@ destroy_component() {
     #   jq -r --arg build_id "$build_id" \
     #   '.data.[] | select(.id == ($build_id | tonumber)) | .status' \
     # )"
-    status=$(echo "$status" | jq -r .data[-1].status)
+    status=$(echo "$status" | jq -r '.data[] | select(.id == '$build_id') | .status')
 
     (( count +=1 ))
     case "${status:-}" in

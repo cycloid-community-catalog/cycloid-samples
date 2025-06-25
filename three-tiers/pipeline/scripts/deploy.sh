@@ -32,8 +32,8 @@ wait_for_component() {
     -H 'content-type: application/vnd.cycloid.io.v1+json'
   )"
 
-  sleep 5
-  # build_id="$(echo "$build_json" | jq -r '.data.id')"
+  sleep 3
+  build_id="$(echo "$build_json" | jq -r '.data.id')"
   echo "You can check deploy logs here:"
   echo "${CY_CONSOLE_URL}/organizations/${CY_ORG}/projects/${CY_PROJECT}/environments/${CY_ENV}/components/${component}/pipelines/${CY_PROJECT}-${CY_ENV}-${component}/jobs/deploy/builds"
 
@@ -47,12 +47,7 @@ wait_for_component() {
       -H 'content-type: application/vnd.cycloid.io.v1+json' \
     )"
 
-    # status="$(echo "$status" | \
-    #   jq -r --arg build_id "$build_id" \
-    #   '.data.[] | select(.id == ($build_id | tonumber)) | .status' \
-    # )"
-
-    status=$(echo "$status" | jq -r .data[-1].status)
+    status=$(echo "$status" | jq -r '.data[] | select(.id == '$build_id') | .status')
 
     (( count +=1 ))
     case "${status:-}" in
