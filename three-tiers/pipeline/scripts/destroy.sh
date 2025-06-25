@@ -21,7 +21,9 @@ destroy_component() {
     -H 'content-type: application/vnd.cycloid.io.v1+json'
   )"
 
-  build_id="$(echo "$build_json" | jq -r '.data.id')"
+  # build_id="$(echo "$build_json" | jq -r '.data.id')"
+  sleep 5
+
   count=0
   while true; do
     sleep 15
