@@ -19,6 +19,7 @@ STACKS="$(cy stack list -o json)"
 stack_network_ref="$(echo "$STACKS" | jq -r '.[] | select(.canonical == "network") | .ref')"
 stack_database_ref="$(echo "$STACKS" | jq -r '.[] | select(.canonical == "database") | .ref')"
 stack_caas_ref="$(echo "$STACKS" | jq -r '.[] | select(.canonical == "caas") | .ref')"
+stack_sla_ref="$(echo "$STACKS" | jq -r '.[] | select(.canonical == "sla") | .ref')"
 
 wait_for_component() {
   local component=${1:?component as first arg}
@@ -64,6 +65,14 @@ wait_for_component() {
     esac
   done
 }
+
+sla_component="${CY_COMPONENT}-sla"
+sla_component_name="${CY_COMPONENT_NAME}: SLA"
+cy component create --update \
+  --component "$sla_component"  \
+  --name "$sla_component_name" \
+  --description "The network landing zone for ${CY_COMPONENT_NAME}" \
+  --stack-ref "$stack_sla_ref" --use-case "$USE_CASE" -o yaml
 
 network_component="${CY_COMPONENT}-network"
 network_component_name="${CY_COMPONENT_NAME}: Network"

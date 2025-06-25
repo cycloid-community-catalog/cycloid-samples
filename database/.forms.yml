@@ -5,7 +5,7 @@ use_cases:
     sections:
       - name: Configurations
         groups:
-          - name: Access
+          - name: Infrastructure
             technologies: [pipeline]
             vars:
               - name: "Network"

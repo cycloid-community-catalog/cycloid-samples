@@ -54,17 +54,22 @@ jobs:
           CY_API_URL: ($ .api_url $)
           CY_API_KEY: "TODO"
           CY_STACKFORMS_VARS:
+            "Service configuration":
+              Support:
+                digit_support_level: ((digit_support_level))
+                digit_uptime: ((digit_uptime))
+                digit_recover_time: ((digit_recover_time))
           ($- if eq .use_case "aws" $)
             Configurations:
               Access:
                 aws_default_region: ((aws_default_region))
-                network_inventory: ((network_inventory))
               Database:
                 postgres_engine_version: ((postgres_engine_version))
                 postgres_type: ((postgres_type))
                 postgres_backup_retention: ((postgres_backup_retention))
               Infrastructure:
-                database_inventory: # arn ?
+                database_inventory: "($ .project $)-($ .environment $)-relational-database"
+                network_inventory: "($ .project $)-($ .environment $)-network"
                 demo_gitlab_project: ((demo_gitlab_project))
                 web_image_version: ((web_image_version))
           ($- end $)
