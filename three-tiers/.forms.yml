@@ -40,7 +40,7 @@ shared:
 use_cases:
   - name: aws
     sections:
-      - "<<": *sla
+      - *sla
       - name: Example section
         groups:
           - name: Example group
@@ -146,7 +146,7 @@ use_cases:
 
   - name: azure
     sections:
-      - "<<": *sla
+      - *sla
       - name: Example section
         groups:
           - name: Example group
