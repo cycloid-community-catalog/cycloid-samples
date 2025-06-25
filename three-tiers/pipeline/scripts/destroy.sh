@@ -24,7 +24,7 @@ destroy_component() {
   build_id="$(echo "$build_json" | jq -r '.data.id')"
   count=0
   while true; do
-    sleep 1
+    sleep 15
     status="$(curl -s \
       "${CY_API_URL}/organizations/${CY_ORG}/projects/${CY_PROJECT}/environments/${CY_ENV}/components/${component}/pipelines/${CY_PROJECT}-${CY_ENV}-${component}/jobs/destroy/builds" \
       -H 'Accept: application/json' \

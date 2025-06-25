@@ -38,7 +38,7 @@ wait_for_component() {
 
   count=0
   while true; do
-    sleep 1
+    sleep 15
     status="$(curl -s \
       "${CY_API_URL}/organizations/${CY_ORG}/projects/${CY_PROJECT}/environments/${CY_ENV}/components/${component}/pipelines/${CY_PROJECT}-${CY_ENV}-${component}/jobs/deploy/builds" \
       -H 'Accept: application/json' \
