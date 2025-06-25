@@ -21,7 +21,7 @@ variable "organization" {
 
 # network
 module "network" {
-  source       = "github.com/cycloid-community-catalog/cycloid-samples/database/terraform/azure/network"
+  source       = "github.com/cycloid-community-catalog/cycloid-samples/network/terraform/azure/network"
   component    = var.component
   env          = var.env
   project      = var.project
