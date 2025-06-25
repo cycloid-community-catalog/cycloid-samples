@@ -46,12 +46,12 @@ use_cases:
                 values:
                   - { label: bCU1, value: "db.t3.medium" }
                   - { label: bCU2, value: "db.t3.large" }
-                  - { label: bCU3, value: "db.t3.xlarge" }
-                  - { label: bCU4, value: "db.t3.2xlarge" }
-                  - { label: CU1, value: "db.t4.medium" }
-                  - { label: CU2, value: "db.t4.large" }
-                  - { label: CU3, value: "db.t4.xlarge" }
-                  - { label: CU4, value: "db.t4.2xlarge" }
+                  - { label: bCU3, value: "db.t4g.medium" }
+                  - { label: bCU4, value: "db.t4g.large" }
+                  - { label: CU1, value: "db.r5g.large" }
+                  - { label: CU2, value: "db.r6g.large" }
+                  - { label: CU3, value: "db.r6g.xlarge" }
+                  - { label: CU4, value: "db.r6g.2xlarge" }
                 default: bCU1
 
                 # bCU Compute Unit for burstable applications
