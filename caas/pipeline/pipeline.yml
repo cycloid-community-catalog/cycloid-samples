@@ -189,8 +189,8 @@ jobs:
                   url=$(jq -r .application_url tfstate/metadata)
                   code=404
                   while [[ "$code" != 200 ]]; do
-                    code="$(curl -sk "${url}" -w "%{http_code}" -o /dev/null)"
-                    echo "Waiting for app, status code: ${code}"
+                    code="$(curl -sk "https://${url}" -w "%{http_code}" -o /dev/null)"
+                    echo "Waiting for app url ${url} to come up, status code: ${code}"
                     sleep 1
                   done
 
