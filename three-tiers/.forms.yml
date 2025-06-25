@@ -84,16 +84,25 @@ use_cases:
                 description: "Type of AWS RDS database."
                 key: postgres_type
                 widget: auto_complete
-                type: map
+                # type: map
+                type: string
                 values:
-                  - { label: bCU1, value: "db.t3.medium" }
-                  - { label: bCU2, value: "db.t3.large" }
-                  - { label: bCU3, value: "db.t3.xlarge" }
-                  - { label: bCU4, value: "db.t3.2xlarge" }
-                  - { label: CU1, value: "db.t4.medium" }
-                  - { label: CU2, value: "db.t4.large" }
-                  - { label: CU3, value: "db.t4.xlarge" }
-                  - { label: CU4, value: "db.t4.2xlarge" }
+                  - bCU1
+                  - bCU2
+                  - bCU3
+                  - bCU4
+                  - CU1
+                  - CU2
+                  - CU3
+                  - CU4
+                  # - { label: bCU1, value: "db.t3.medium" }
+                  # - { label: bCU2, value: "db.t3.large" }
+                  # - { label: bCU3, value: "db.t3.xlarge" }
+                  # - { label: bCU4, value: "db.t3.2xlarge" }
+                  # - { label: CU1, value: "db.t4.medium" }
+                  # - { label: CU2, value: "db.t4.large" }
+                  # - { label: CU3, value: "db.t4.xlarge" }
+                  # - { label: CU4, value: "db.t4.2xlarge" }
                 default: bCU1
 
           - name: Backup
@@ -159,18 +168,27 @@ use_cases:
               - name: "Type"
                 description: "The size of the database server."
                 key: sku
-                type: map
                 widget: auto_complete
+                # type: map
+                type: string
                 values:
-                  - { label: "bCU1", value: "B_Standard_B1ms" }
-                  - { label: "bCU2", value: "B_Standard_B2s" }
-                  - { label: "bCU3", value: "B_Standard_B4ms" }
-                  - { label: "bCU4", value: "B_Standard_B4ms" }
-                  - { label: "CU1", value: "B_Standard_B1ms" }
-                  - { label: "CU2", value: "B_Standard_B2s" }
-                  - { label: "CU3", value: "B_Standard_B4ms" }
-                  - { label: "CU4", value: "B_Standard_B4ms" }
-                default: "bCU1"
+                  - bCU1
+                  - bCU2
+                  - bCU3
+                  - bCU4
+                  - CU1
+                  - CU2
+                  - CU3
+                  - CU4
+                  # - { label: "bCU1", value: "B_Standard_B1ms" }
+                  # - { label: "bCU2", value: "B_Standard_B2s" }
+                  # - { label: "bCU3", value: "B_Standard_B4ms" }
+                  # - { label: "bCU4", value: "B_Standard_B4ms" }
+                  # - { label: "CU1", value: "B_Standard_B1ms" }
+                  # - { label: "CU2", value: "B_Standard_B2s" }
+                  # - { label: "CU3", value: "B_Standard_B4ms" }
+                  # - { label: "CU4", value: "B_Standard_B4ms" }
+                default: bCU1
 
           - name: Backup
             technologies: [pipeline]
