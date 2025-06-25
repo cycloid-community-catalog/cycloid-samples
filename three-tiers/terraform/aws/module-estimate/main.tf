@@ -53,7 +53,7 @@ module "vpc" {
 
 #database
 module "database" {
-  source       = "github.com/cycloid-community-catalog/cycloid-samples/database/terraform/aws/module-sample?ref=stacks"
+  source       = "github.com/cycloid-community-catalog/cycloid-samples/database/terraform/aws/module-sample"
   component    = var.component
   env          = var.env
   project      = var.project
