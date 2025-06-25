@@ -70,7 +70,6 @@ jobs:
               Infrastructure:
                 database_inventory: "($ .project $)-($ .environment $)-database"
                 network_inventory: "($ .project $)-($ .environment $)-network"
-                db_name: "postgres-($ .project $)-($ .environment $)"
               Application:
                 demo_gitlab_project: ((demo_gitlab_project))
                 web_image_version: ((web_image_version))
@@ -81,6 +80,7 @@ jobs:
                 location: ((location))
               Infrastructure:
                 virtual_network_name: "main-network"
+                db_name: "postgres-($ .project $)-($ .environment $)"
               Database:
                 sku: ((sku))
                 engine_version: ((engine_version))
