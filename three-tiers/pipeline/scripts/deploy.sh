@@ -46,10 +46,12 @@ wait_for_component() {
       -H 'content-type: application/vnd.cycloid.io.v1+json' \
     )"
 
-    status="$(echo "$status" | \
-      jq -r --arg build_id "$build_id" \
-      '.data.[] | select(.id == ($build_id | tonumber)) | .status' \
-    )"
+    # status="$(echo "$status" | \
+    #   jq -r --arg build_id "$build_id" \
+    #   '.data.[] | select(.id == ($build_id | tonumber)) | .status' \
+    # )"
+
+    status=$(echo "$status" | jq -r .data[-1].status)
 
     (( count +=1 ))
     case "${status:-}" in
