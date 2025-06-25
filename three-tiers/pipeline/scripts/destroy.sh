@@ -70,3 +70,7 @@ destroy_component "$database_component" "$database_component_name"
 network_component="network"
 network_component_name="Network"
 destroy_component "$network_component" "$network_component_name"
+
+sla_component="sla"
+sla_component_name="sla"
+destroy_component "$sla_component" "$sla_component_name"
