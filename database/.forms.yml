@@ -48,7 +48,7 @@ use_cases:
                   - { label: bCU2, value: "db.t3.large" }
                   - { label: bCU3, value: "db.t4g.medium" }
                   - { label: bCU4, value: "db.t4g.large" }
-                  - { label: CU1, value: "db.r5g.large" }
+                  - { label: CU1, value: "db.r5.large" }
                   - { label: CU2, value: "db.r6g.large" }
                   - { label: CU3, value: "db.r6g.xlarge" }
                   - { label: CU4, value: "db.r6g.2xlarge" }
