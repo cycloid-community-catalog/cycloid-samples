@@ -1,12 +1,5 @@
 ---
 resources:
-- name: cycloid-toolkit
-  type: registry-image
-  icon: github
-  source:
-    repository: cycloid/cycloid-toolkit
-    tag: latest
-
 - name: stack
   type: git
   icon: github-circle
@@ -69,7 +62,7 @@ jobs:
               Backup:
                 postgres_backup_retention: ((postgres_backup_retention))
               Infrastructure:
-                database_inventory: "($ .project $)-($ .environment $)-relational-database"
+                database_inventory: "($ .project $)-($ .environment $)-database"
                 network_inventory: "($ .project $)-($ .environment $)-network"
               Application:
                 demo_gitlab_project: ($ .project $)
