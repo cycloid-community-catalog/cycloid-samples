@@ -59,14 +59,14 @@ destroy_component() {
 }
 
 # Reverse the order of the components
-caas_component="${CY_COMPONENT}-caas"
-caas_component_name="${CY_COMPONENT_NAME}: CAAS"
+caas_component="caas"
+caas_component_name="CAAS"
 destroy_component "$caas_component" "$caas_component_name"
 
-database_component="${CY_COMPONENT}-database"
-database_component_name="${CY_COMPONENT_NAME}: Postgres"
+database_component="database"
+database_component_name="Database"
 destroy_component "$database_component" "$database_component_name"
 
-network_component="${CY_COMPONENT}-network"
-network_component_name="${CY_COMPONENT_NAME}: Network"
+network_component="network"
+network_component_name="Network"
 destroy_component "$network_component" "$network_component_name"
