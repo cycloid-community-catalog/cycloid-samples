@@ -59,8 +59,8 @@ module "database" {
   project      = var.project
   organization = var.organization
 
-  aws_region = local.network_region
-  vpc_id     = local.network_vpc_id
+  aws_region = var.aws_region
+  vpc_id     = "foobar"
 
   postgres_engine_version = var.engine_version
   postgres_type           = var.postgres_type
