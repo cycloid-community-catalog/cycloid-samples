@@ -171,6 +171,29 @@ jobs:
           params:
             terraform_source: merged-stack/
 
+        - task: wait-online
+          config:
+            platform: linux
+            image_resource:
+              type: registry-image
+              source:
+                repository: cycloid/cycloid-toolkit
+                tag: latest
+            inputs:
+            - name: tfstate
+            run:
+              path: /bin/bash
+              args:
+                - '-ec'
+                - |
+                  url=$(jq -r .application_url tfstate/metadata)
+                  code=404
+                  while [[ "$code" != 200 ]]; do
+                    code="$(curl -sk "${url}" -w "%{http_code}" -o /dev/null)"
+                    echo "Waiting for app, status code: ${code}"
+                    sleep 1
+                  done
+
         - task: notification
           config:
             platform: linux
