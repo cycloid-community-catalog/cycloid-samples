@@ -72,5 +72,4 @@ network_component_name="Network"
 destroy_component "$network_component" "$network_component_name"
 
 sla_component="sla"
-sla_component_name="sla"
-destroy_component "$sla_component" "$sla_component_name"
+cy component delete --component "${sla_component}"
