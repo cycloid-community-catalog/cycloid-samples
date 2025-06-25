@@ -49,6 +49,7 @@ jobs:
           CY_ENV: ($ .environment $)
           CY_COMPONENT: ($ .component $)
           CY_COMPONENT_NAME: ($ .component_name $)
+          CY_CONSOLE_URL: ($ .console_url $)
           CY_API_URL: ($ .api_url $)
           CY_API_KEY: ((admin-api-key.key))
           CY_STACKFORMS_VARS:
