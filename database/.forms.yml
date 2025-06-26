@@ -36,7 +36,7 @@ use_cases:
                 widget: auto_complete
                 type: string
                 default: "16"
-                values: ["11", "12", "13", "14", "15", "16"]
+                values: ["11", "12", "13", "14", "15", "16", "17"]
 
               - name: "Type"
                 description: "Type of AWS RDS database."
