@@ -43,8 +43,8 @@ resource "azurerm_container_app_environment" "app" {
   }
 }
 
-resource "random_password" "storage_account_name" {
-  length  = 12
+resource "random_password" "app_id" {
+  length  = 4
   lower   = true
   upper   = false
   special = false
@@ -52,7 +52,7 @@ resource "random_password" "storage_account_name" {
 }
 
 resource "azurerm_storage_account" "app" {
-  name                     = random_password.storage_account_name.result
+  name                     = local.storage_name
   tags                     = local.default_tags
   resource_group_name      = data.azurerm_resource_group.current.name
   location                 = data.azurerm_resource_group.current.location
@@ -76,8 +76,9 @@ resource "azurerm_container_app_environment_storage" "app" {
 }
 
 locals {
-  app_name  = var.app_name != "" ? var.app_name : "${var.project}-${var.component}"
-  app_image = var.app_image
+  app_name     = var.app_name != "" ? var.app_name : "${var.component}-${random_password.app_id.result}"
+  app_image    = var.app_image
+  storage_name = substr(replace(lower(local.app_name), "[0-9-_]", ""), 0, 10)
 
   # temp remove after split
   pgurl = "jdbc:postgresql://${data.azurerm_postgresql_flexible_server.db.fqdn}:5432/${var.app_db}"
