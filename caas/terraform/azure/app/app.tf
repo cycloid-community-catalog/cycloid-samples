@@ -76,7 +76,7 @@ resource "azurerm_container_app_environment_storage" "app" {
 }
 
 locals {
-  app_name     = var.app_name != "" ? var.app_name : "${var.component}-${random_password.app_id.result}"
+  app_name     = "${var.component}-${random_password.app_id.result}"
   app_image    = var.app_image
   storage_name = substr(replace(lower(local.app_name), "[\\d-_]", ""), 0, 10)
 
