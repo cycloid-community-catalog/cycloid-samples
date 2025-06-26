@@ -76,7 +76,7 @@ resource "azurerm_container_app_environment_storage" "app" {
 }
 
 locals {
-  app_name  = var.app_name != "" ? var.app_name : var.component
+  app_name  = var.app_name != "" ? var.app_name : "${var.project}-${var.component}"
   app_image = var.app_image
 
   # temp remove after split
