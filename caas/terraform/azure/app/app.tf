@@ -78,7 +78,7 @@ resource "azurerm_container_app_environment_storage" "app" {
 locals {
   app_name     = var.app_name != "" ? var.app_name : "${var.component}-${random_password.app_id.result}"
   app_image    = var.app_image
-  storage_name = substr(replace(lower(local.app_name), "[0-9-_]", ""), 0, 10)
+  storage_name = substr(replace(lower(local.app_name), "[\\d-_]", ""), 0, 10)
 
   # temp remove after split
   pgurl = "jdbc:postgresql://${data.azurerm_postgresql_flexible_server.db.fqdn}:5432/${var.app_db}"
