@@ -22,13 +22,13 @@ template: false
 # Add use cases to the stack.
 # See: https://docs.cycloid.io/manage/pipeline/multi-use-case.html#multiple-use-case
 config:
-  pr:
-    name: "Pull Request watcher"
-    description: "Watch Gitlab Pull Request to provisionne dedicated e-env."
-    cloud_provider: aws
+  merge-request:
+    name: "Merge Request watcher"
+    description: "Watch Gitlab Merge Request to provisionne dedicated e-env."
+    # cloud_provider: aws
     pipeline:
       pipeline:
-        path: "pipeline/pr-pipeline.yml"
+        path: "pipeline/merge-request-pipeline.yml"
       variables:
         path: "pipeline/variables.sample.yml"
         destination: "($ .config_root $)/pipeline/variables.yml"
@@ -36,7 +36,7 @@ config:
   e-env:
     name: "Ephemeral Environment"
     description: "Create a PR Ephemeral Environment (e-env) Database as a service used by developers."
-    cloud_provider: aws
+    # cloud_provider: aws
     pipeline:
       pipeline:
         path: "pipeline/env-pipeline.yml"
