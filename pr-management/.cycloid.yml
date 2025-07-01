@@ -1,0 +1,49 @@
+version: "4"
+name: Gitlab Pull Request Management
+canonical: pr-management
+author: "cycloid-florian"
+# Fill in the stack details.
+description: "Create a relational Database as a service."
+image: https://static.cycloid.io/gitlab.svg
+keywords:
+  - "terraform"
+  - "aws"
+  - "digit"
+  - "gitlab"
+  - "pr"
+  - "spring"
+  - "database"
+  - "postgres"
+  - "aurora"
+technologies:
+  - technology: terraform
+    version: 1.11.4
+template: false
+# Add use cases to the stack.
+# See: https://docs.cycloid.io/manage/pipeline/multi-use-case.html#multiple-use-case
+config:
+  pr:
+    name: "Pull Request watcher"
+    description: "Watch Gitlab Pull Request to provisionne dedicated e-env."
+    cloud_provider: aws
+    pipeline:
+      pipeline:
+        path: "pipeline/pr-pipeline.yml"
+      variables:
+        path: "pipeline/variables.sample.yml"
+        destination: "($ .config_root $)/pipeline/variables.yml"
+
+  e-env:
+    name: "Ephemeral Environment"
+    description: "Create a PR Ephemeral Environment (e-env) Database as a service used by developers."
+    cloud_provider: aws
+    pipeline:
+      pipeline:
+        path: "pipeline/env-pipeline.yml"
+      variables:
+        path: "pipeline/variables.sample.yml"
+        destination: "($ .config_root $)/pipeline/variables.yml"
+    terraform:
+      main:
+        path: "terraform/e-env/main.tf.sample"
+        destination: "($ .config_root $)/terraform/main.tf"

@@ -1,0 +1,51 @@
+# Define the stack configuration form and organize inputs of various types into sections and groups.
+# See: https://docs.staging.cycloid.io/deploy/stackforms/file-format.html
+use_cases:
+  - name: pr
+    sections:
+      - name: Configurations
+        groups:
+          - name: Infrastructure
+            technologies: [pipeline]
+            vars:
+
+  - name: e-env
+    sections:
+      - name: Configurations
+        groups:
+          - name: Database
+            technologies: [terraform]
+            vars:
+              - name: "Engine version"
+                description: "Postgres engine version."
+                key: postgres_engine_version
+                widget: auto_complete
+                type: string
+                default: "16"
+                values: ["11", "12", "13", "14", "15", "16", "17"]
+
+              - name: "Type"
+                description: "Type of AWS RDS database."
+                key: postgres_type
+                widget: auto_complete
+                type: map
+                values:
+                  - { label: bCU1, value: "db.t3.medium" }
+                  - { label: bCU2, value: "db.t3.large" }
+                  - { label: bCU3, value: "db.t4g.medium" }
+                  - { label: bCU4, value: "db.t4g.large" }
+                  - { label: CU1, value: "db.r5.large" }
+                  - { label: CU2, value: "db.r6g.large" }
+                  - { label: CU3, value: "db.r6g.xlarge" }
+                  - { label: CU4, value: "db.r6g.2xlarge" }
+                default: bCU1
+
+          - name: Backup
+            technologies: [terraform]
+            vars:
+              - name: "Retention"
+                description: "Snapshot retention in days"
+                key: postgres_backup_retention
+                widget: number
+                type: integer
+                default: 7
