@@ -50,7 +50,7 @@ resources:
   icon: gitlab
   source:
    uri: https://gitlab.com/cycloidio/testpr.git
-   private_token: ((gitlab_https.password))
+   private_token: ((gitlab-token-digit.password))
 
 # The Terraform Concourse resource to manage infrastructure via Terraform.
 # See: https://github.com/cycloidio/terraform-resource#source-configuration
