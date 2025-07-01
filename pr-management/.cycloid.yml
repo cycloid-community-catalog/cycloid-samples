@@ -1,5 +1,5 @@
 version: "4"
-name: Gitlab Pull Request Management
+name: Gitlab Merge Request Management
 canonical: pr-management
 author: "cycloid-florian"
 # Fill in the stack details.
@@ -10,7 +10,8 @@ keywords:
   - "aws"
   - "digit"
   - "gitlab"
-  - "pr"
+  - "merge"
+  - "request"
   - "spring"
   - "database"
   - "postgres"
