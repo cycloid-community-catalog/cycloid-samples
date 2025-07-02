@@ -40,7 +40,7 @@ resource_types:
   type: registry-image
   check_every: 24h
   source:
-   repository: registry.gitlab.com/cheatsc/concourse-gitlab-merge-request-resource/concourse-gitlab-merge-request-resource
+   repository: talset/test
    tag: latest
 
 # Declare resources to be invoked later in jobs.
