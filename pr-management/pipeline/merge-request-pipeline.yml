@@ -130,6 +130,8 @@ jobs:
                 tag: latest
             inputs:
               - name: merge-request
+            outputs:
+              - name: message
             run:
               path: bash
               args:
@@ -137,13 +139,36 @@ jobs:
                 - |
                   echo "test"
                   ls merge-request
-                  exit 1
+                  echo "Gitlab comment $(date)" >> message/file
+                  echo "Your applicaton url is: https://foobar" >> message/file
             params:
               CONSOLE_URL: ($ .console_url $)
               CY_API_URL: ($ .api_url $)
               # CY_API_KEY: ((admin-api-key.password))
               CY_ORG: ($ .organization $)
               CY_VERSION: latest
+
+        - put: merge-request
+          params:
+            repository: merge-request
+            status: success
+            comment:
+              file: message/file
+
+        - task: exit
+          config:
+            platform: linux
+            image_resource:
+              type: registry-image
+              source:
+                repository: cycloid/cycloid-toolkit
+                tag: latest
+            run:
+              path: bash
+              args:
+                - "-ec"
+                - |
+                  exit 1
 
         - in_parallel:
             steps:
