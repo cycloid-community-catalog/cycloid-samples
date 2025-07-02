@@ -88,8 +88,8 @@ resources:
     private_key: ((($ .catalog_repository_credential_path $).ssh_key))
     ($- end $)
     # Include only the Terraform files in the specified directory.
-    paths:
-      - ($ .stack_path $)/terraform/($ .use_case $)/*
+    # paths:
+    #   - ($ .stack_path $)/terraform/($ .use_case $)/*
 
 # The Terraform config (will be merged with the stack).
 - name: git_config
@@ -107,7 +107,8 @@ resources:
     ($- end $)
     # Include only the Terraform files in the specified directory.
     paths:
-      - ($ .config_root $)/terraform/*
+      - ($ .config_root $)/*
+      # - ($ .config_root $)/terraform/*
 
 # Define jobs that form the pipeline
 jobs:
