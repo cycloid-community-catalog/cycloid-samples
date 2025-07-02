@@ -78,8 +78,6 @@ resources:
   source:
     uri: ($ .catalog_repository_url $)
     branch: ($ .catalog_repository_branch $)
-    # Stack templating examples:
-    # https://docs.cycloid.io/reference/stack/concepts/templating/
     ($- if eq .catalog_repository_credential_type "basic_auth" $)
     username: ((($ .catalog_repository_credential_path $).username))
     password: ((($ .catalog_repository_credential_path $).password))
@@ -87,9 +85,9 @@ resources:
     ($- if eq .catalog_repository_credential_type "ssh" $)
     private_key: ((($ .catalog_repository_credential_path $).ssh_key))
     ($- end $)
-    # Include only the Terraform files in the specified directory.
-    # paths:
-    #   - ($ .stack_path $)/terraform/($ .use_case $)/*
+    paths:
+      - ($ .stack_path $)/*
+      # - ($ .stack_path $)/terraform/($ .use_case $)/*
 
 # The Terraform config (will be merged with the stack).
 - name: git_config
