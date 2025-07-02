@@ -144,7 +144,6 @@ jobs:
               # CY_API_KEY: ((admin-api-key.password))
               CY_ORG: ($ .organization $)
               CY_VERSION: latest
-              TARGET_PROJECT: ((target_project))
 
         - in_parallel:
             steps:
